@@ -107,20 +107,27 @@ router.get('/dashboard', async (c) => {
 
   const kpis = {
     plannedHeadcount: plannedCount,
+    planned_headcount: plannedCount,
     openReqs,
+    open_headcount: openReqs,
     filledCount,
     filled_headcount: filledCount,
     actual_headcount: filledCount,
     terminationCount,
     netHeadcount,
+    net_headcount: netHeadcount,
     headcountVsPlan,
     plannedCost: Math.round(plannedCost),
     actualCost: Math.round(actualCost),
     burn_total: Math.round(actualCost),
     actual_cost: Math.round(actualCost),
+    burn: Math.round(actualCost),
     budgetTotal: Math.round(budgetTotal),
+    budget: Math.round(budgetTotal),
     burnVsBudget: Math.round(burnVsBudget),
+    burn_variance: Math.round(burnVsBudget),
     openGhostReqs: ghostRows.length,
+    open_ghost_reqs: ghostRows.length,
     latestReconciliationVariance: latestRecon ? Math.round(latestRecon.cost_variance) : 0,
   }
 
