@@ -5,9 +5,28 @@
 async function http(path: string, init?: RequestInit) {
   const res = await fetch(`/api/proxy/${path}`, init)
   const text = await res.text()
-  const data = text ? JSON.parse(text) : null
+  let data: any = null
+  if (text) {
+    try {
+      data = JSON.parse(text)
+    } catch {
+      data = null
+    }
+  }
   if (!res.ok) {
-    const msg = (data && (data.error || data.message)) || `Request failed (${res.status})`
+    const errField = data && (data.error || data.message)
+    let msg: string
+    if (typeof errField === 'string') {
+      msg = errField
+    } else if (errField && Array.isArray(errField.issues)) {
+      msg = errField.issues
+        .map((i: { path?: string[]; message?: string }) => `${(i.path ?? []).join('.')}: ${i.message}`)
+        .join('; ')
+    } else if (errField) {
+      msg = JSON.stringify(errField)
+    } else {
+      msg = text || `Request failed (${res.status})`
+    }
     throw new Error(msg)
   }
   return data
@@ -20,7 +39,7 @@ function send(path: string, method: string, body?: unknown) {
   return http(path, {
     method,
     headers: { 'Content-Type': 'application/json' },
-    body: body === undefined ? undefined : JSON.stringify(body),
+    body: JSON.stringify(body ?? {}),
   })
 }
 const post = (path: string, body?: unknown) => send(path, 'POST', body)
