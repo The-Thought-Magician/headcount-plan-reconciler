@@ -333,15 +333,15 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
   }
 
   const inputCls =
-    'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500'
-  const labelCls = 'mb-1 block text-xs font-medium text-slate-400'
+    'w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500'
+  const labelCls = 'mb-1 block text-xs font-medium text-zinc-400'
 
   if (loading && !plan) return <PageSpinner label="Loading plan editor..." />
 
   if (error && !plan) {
     return (
       <div className="space-y-4">
-        <Link href="/dashboard/plan" className="text-sm text-sky-300 hover:underline">
+        <Link href="/dashboard/plan" className="text-sm text-teal-300 hover:underline">
           ← Back to plans
         </Link>
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">
@@ -355,16 +355,16 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <Link href="/dashboard/plan" className="text-sm text-sky-300 hover:underline">
+        <Link href="/dashboard/plan" className="text-sm text-teal-300 hover:underline">
           ← Back to plans
         </Link>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-xl font-semibold text-slate-100">{plan?.name}</h1>
+              <h1 className="text-xl font-semibold text-zinc-100">{plan?.name}</h1>
               {plan && <Badge tone={STATUS_TONE[plan.status] ?? 'slate'}>{plan.status}</Badge>}
             </div>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-zinc-500">
               FY{plan?.fiscal_year} · version {plan?.version} · plan-line editor by team, level, and quarter
             </p>
           </div>
@@ -398,24 +398,24 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Budgeted cost by quarter</h2>
+            <h2 className="text-sm font-semibold text-zinc-200">Budgeted cost by quarter</h2>
           </CardHeader>
           <CardBody>
             {totals.totalCost === 0 ? (
-              <p className="text-sm text-slate-500">No budgeted cost yet.</p>
+              <p className="text-sm text-zinc-500">No budgeted cost yet.</p>
             ) : (
               <div className="space-y-3">
                 {totals.byQuarter.map((q) => (
                   <div key={q.quarter}>
                     <div className="mb-1 flex items-center justify-between text-xs">
-                      <span className="text-slate-400">
+                      <span className="text-zinc-400">
                         Q{q.quarter} · {q.headcount} HC
                       </span>
-                      <span className="font-medium text-slate-300">{fmtMoney(q.cost)}</span>
+                      <span className="font-medium text-zinc-300">{fmtMoney(q.cost)}</span>
                     </div>
-                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                    <div className="h-2.5 w-full overflow-hidden rounded-full bg-zinc-800">
                       <div
-                        className="h-full rounded-full bg-sky-500"
+                        className="h-full rounded-full bg-teal-500"
                         style={{ width: `${Math.max(2, (q.cost / maxQCost) * 100)}%` }}
                       />
                     </div>
@@ -428,11 +428,11 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
 
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Cost by team</h2>
+            <h2 className="text-sm font-semibold text-zinc-200">Cost by team</h2>
           </CardHeader>
           <CardBody className="px-0 py-0">
             {totals.byTeam.length === 0 ? (
-              <p className="px-5 py-4 text-sm text-slate-500">No team allocations yet.</p>
+              <p className="px-5 py-4 text-sm text-zinc-500">No team allocations yet.</p>
             ) : (
               <Table>
                 <THead>
@@ -445,9 +445,9 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
                 <TBody>
                   {totals.byTeam.map((r) => (
                     <TR key={r.team}>
-                      <TD className="pl-5 font-medium text-slate-200">{r.team}</TD>
+                      <TD className="pl-5 font-medium text-zinc-200">{r.team}</TD>
                       <TD className="text-right">{r.headcount}</TD>
-                      <TD className="pr-5 text-right text-slate-300">{fmtMoney(r.cost)}</TD>
+                      <TD className="pr-5 text-right text-zinc-300">{fmtMoney(r.cost)}</TD>
                     </TR>
                   ))}
                 </TBody>
@@ -461,18 +461,18 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">Plan lines</h2>
+            <h2 className="text-sm font-semibold text-zinc-200">Plan lines</h2>
             <div className="flex flex-wrap items-center gap-2">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search role / justification..."
-                className="w-52 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-100 placeholder-slate-600 focus:border-sky-500 focus:outline-none"
+                className="w-52 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 placeholder-zinc-600 focus:border-teal-500 focus:outline-none"
               />
               <select
                 value={teamFilter}
                 onChange={(e) => setTeamFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-2.5 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="rounded-lg border border-zinc-700 bg-zinc-950 px-2.5 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               >
                 <option value="all">All teams</option>
                 {teams.map((t) => (
@@ -484,7 +484,7 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
               <select
                 value={levelFilter}
                 onChange={(e) => setLevelFilter(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-950 px-2.5 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="rounded-lg border border-zinc-700 bg-zinc-950 px-2.5 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               >
                 <option value="all">All levels</option>
                 {LEVELS.map((l) => (
@@ -539,24 +539,24 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
                   const busy = busyId === l.id
                   return (
                     <TR key={l.id}>
-                      <TD className="pl-5 font-medium text-slate-200">{teamName(l.team_id)}</TD>
+                      <TD className="pl-5 font-medium text-zinc-200">{teamName(l.team_id)}</TD>
                       <TD>
                         <Badge tone="slate">{l.level || '—'}</Badge>
                       </TD>
                       <TD>
-                        <div className="text-slate-200">{l.role_title || '—'}</div>
+                        <div className="text-zinc-200">{l.role_title || '—'}</div>
                         {l.justification && (
-                          <div className="max-w-[18rem] truncate text-xs text-slate-500" title={l.justification}>
+                          <div className="max-w-[18rem] truncate text-xs text-zinc-500" title={l.justification}>
                             {l.justification}
                           </div>
                         )}
                       </TD>
                       <TD>Q{l.quarter ?? '—'}</TD>
                       <TD className="text-right">{l.count ?? 0}</TD>
-                      <TD className="text-right text-slate-400">{fmtMoney(num(l.budgeted_base))}</TD>
-                      <TD className="text-right font-medium text-slate-200">{fmtMoney(lineCost(l))}</TD>
+                      <TD className="text-right text-zinc-400">{fmtMoney(num(l.budgeted_base))}</TD>
+                      <TD className="text-right font-medium text-zinc-200">{fmtMoney(lineCost(l))}</TD>
                       <TD>
-                        <span className="text-xs text-slate-400">{l.hire_type || '—'}</span>
+                        <span className="text-xs text-zinc-400">{l.hire_type || '—'}</span>
                       </TD>
                       <TD className="pr-5">
                         <div className="flex items-center justify-end gap-1.5">
@@ -565,7 +565,7 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
                               setAnnotateLine(l)
                               setAnnotateNote('')
                             }}
-                            className="rounded-md px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-sky-300"
+                            className="rounded-md px-2 py-1 text-xs text-zinc-400 hover:bg-zinc-800 hover:text-teal-300"
                             title="Annotations"
                           >
                             Notes{ann ? ` (${ann})` : ''}
@@ -741,9 +741,9 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
               className={inputCls}
             />
           </div>
-          <div className="col-span-2 rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-xs text-slate-400">
+          <div className="col-span-2 rounded-lg border border-zinc-800 bg-zinc-950/60 px-3 py-2 text-xs text-zinc-400">
             Fully-loaded estimate:{' '}
-            <span className="font-semibold text-sky-300">
+            <span className="font-semibold text-teal-300">
               {fmtMoney(
                 (num(form.budgeted_base) + num(form.budgeted_variable)) *
                   (1 + num(form.burden_rate)) *
@@ -772,10 +772,10 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
         }
       >
         <div className="space-y-3">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-zinc-400">
             One line per row, comma-separated:{' '}
-            <span className="text-slate-300">team_name, level, role_title, quarter, count, base, variable</span>. Team
-            names must match existing teams. Lines starting with <span className="text-slate-300">#</span> are ignored.
+            <span className="text-zinc-300">team_name, level, role_title, quarter, count, base, variable</span>. Team
+            names must match existing teams. Lines starting with <span className="text-zinc-300">#</span> are ignored.
           </p>
           <textarea
             value={bulkText}
@@ -815,17 +815,17 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
       >
         {annotateLine && (
           <div className="space-y-3">
-            <div className="text-sm text-slate-400">
+            <div className="text-sm text-zinc-400">
               {teamName(annotateLine.team_id)} · {annotateLine.level} · {annotateLine.role_title || 'role'} · Q
               {annotateLine.quarter}
             </div>
             <div className="max-h-48 space-y-2 overflow-y-auto">
               {Array.isArray(annotateLine.annotations) && annotateLine.annotations.length > 0 ? (
                 annotateLine.annotations.map((a, i) => (
-                  <div key={i} className="rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm">
-                    <div className="text-slate-200">{a.note ?? JSON.stringify(a)}</div>
+                  <div key={i} className="rounded-lg border border-zinc-800 bg-zinc-950/60 px-3 py-2 text-sm">
+                    <div className="text-zinc-200">{a.note ?? JSON.stringify(a)}</div>
                     {(a.author || a.at) && (
-                      <div className="mt-0.5 text-xs text-slate-500">
+                      <div className="mt-0.5 text-xs text-zinc-500">
                         {a.author ?? 'someone'}
                         {a.at ? ` · ${new Date(a.at).toLocaleString()}` : ''}
                       </div>
@@ -833,7 +833,7 @@ Sales, IC2, AE, 1, 3, 90000, 90000`
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-slate-500">No annotations yet.</p>
+                <p className="text-sm text-zinc-500">No annotations yet.</p>
               )}
             </div>
             <div>

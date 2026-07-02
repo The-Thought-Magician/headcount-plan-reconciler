@@ -318,7 +318,7 @@ export default function ImportsPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -338,7 +338,7 @@ export default function ImportsPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -351,12 +351,12 @@ export default function ImportsPage() {
       {/* Sample seeder / reset */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Quick start</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Quick start</h2>
         </CardHeader>
         <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm text-slate-300">Populate a realistic sample company or clear this workspace to start over.</p>
-            <p className="mt-0.5 text-xs text-slate-500">
+            <p className="text-sm text-zinc-300">Populate a realistic sample company or clear this workspace to start over.</p>
+            <p className="mt-0.5 text-xs text-zinc-500">
               Seeding creates teams, fiscal periods, a plan with lines, requisitions, hires, terminations, and budget baselines.
             </p>
           </div>
@@ -374,7 +374,7 @@ export default function ImportsPage() {
       {/* CSV import builder */}
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-200">CSV import</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">CSV import</h2>
           <div className="flex flex-wrap items-center gap-2">
             <select
               value={entityType}
@@ -382,7 +382,7 @@ export default function ImportsPage() {
                 setEntityType(e.target.value)
                 setDryRun(null)
               }}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               {ENTITY_TYPES.map((e) => (
                 <option key={e.value} value={e.value}>
@@ -397,7 +397,7 @@ export default function ImportsPage() {
         </CardHeader>
         <CardBody className="space-y-4">
           <div className="flex flex-wrap gap-1.5">
-            <span className="text-xs text-slate-500">Expected columns:</span>
+            <span className="text-xs text-zinc-500">Expected columns:</span>
             {activeEntity.columns.map((c) => (
               <Badge key={c} tone="slate">
                 {c}
@@ -413,15 +413,15 @@ export default function ImportsPage() {
             }}
             rows={8}
             placeholder={`Paste CSV with a header row, e.g.\n${activeEntity.columns.join(',')}`}
-            className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-xs text-slate-200 placeholder:text-slate-600"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-xs text-zinc-200 placeholder:text-zinc-600"
           />
 
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="text-xs text-slate-500">
+            <div className="text-xs text-zinc-500">
               {parsed.rows.length > 0 ? (
                 <span>
                   {parsed.rows.length} row{parsed.rows.length === 1 ? '' : 's'} parsed · columns:{' '}
-                  <span className="text-slate-400">{parsed.headers.join(', ')}</span>
+                  <span className="text-zinc-400">{parsed.headers.join(', ')}</span>
                 </span>
               ) : (
                 <span>Paste CSV above or load a sample to begin.</span>
@@ -439,8 +439,8 @@ export default function ImportsPage() {
 
           {/* Parsed preview */}
           {parsed.rows.length > 0 && (
-            <div className="rounded-lg border border-slate-800">
-              <div className="border-b border-slate-800 px-3 py-2 text-xs font-medium uppercase tracking-wide text-slate-500">
+            <div className="rounded-lg border border-zinc-800">
+              <div className="border-b border-zinc-800 px-3 py-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
                 Preview (first {Math.min(5, parsed.rows.length)} rows)
               </div>
               <Table>
@@ -455,8 +455,8 @@ export default function ImportsPage() {
                   {parsed.rows.slice(0, 5).map((row, i) => (
                     <TR key={i}>
                       {parsed.headers.map((h) => (
-                        <TD key={h} className="text-slate-400">
-                          {row[h] || <span className="text-slate-600">—</span>}
+                        <TD key={h} className="text-zinc-400">
+                          {row[h] || <span className="text-zinc-600">—</span>}
                         </TD>
                       ))}
                     </TR>
@@ -499,7 +499,7 @@ export default function ImportsPage() {
       {/* Import history */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Import history</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Import history</h2>
         </CardHeader>
         <CardBody className="p-0">
           {imports.length === 0 ? (
@@ -524,19 +524,19 @@ export default function ImportsPage() {
               <TBody>
                 {imports.map((job) => (
                   <TR key={job.id}>
-                    <TD className="font-medium text-slate-200">{job.entity_type.replace(/_/g, ' ')}</TD>
+                    <TD className="font-medium text-zinc-200">{job.entity_type.replace(/_/g, ' ')}</TD>
                     <TD>
                       <Badge tone={statusTone(job.status)}>{job.status}</Badge>
                     </TD>
-                    <TD className="text-slate-400">{job.row_count ?? 0}</TD>
+                    <TD className="text-zinc-400">{job.row_count ?? 0}</TD>
                     <TD>
                       {job.error_count && job.error_count > 0 ? (
                         <span className="text-rose-300">{job.error_count}</span>
                       ) : (
-                        <span className="text-slate-500">0</span>
+                        <span className="text-zinc-500">0</span>
                       )}
                     </TD>
-                    <TD className="text-slate-400">{fmtDate(job.created_at)}</TD>
+                    <TD className="text-zinc-400">{fmtDate(job.created_at)}</TD>
                     <TD>
                       <div className="flex justify-end">
                         <Button
@@ -570,15 +570,15 @@ export default function ImportsPage() {
         }
       >
         {detail && detail.errors && detail.errors.length > 0 ? (
-          <ul className="space-y-1.5 text-sm text-slate-300">
+          <ul className="space-y-1.5 text-sm text-zinc-300">
             {detail.errors.map((err, i) => (
-              <li key={i} className="rounded-md border border-slate-800 bg-slate-950/40 px-3 py-2 text-xs">
+              <li key={i} className="rounded-md border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-xs">
                 {formatError(err)}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-slate-500">No errors recorded for this job.</p>
+          <p className="text-sm text-zinc-500">No errors recorded for this job.</p>
         )}
       </Modal>
 
@@ -598,7 +598,7 @@ export default function ImportsPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-zinc-300">
           This permanently clears all teams, plans, requisitions, hires, terminations, budgets, reconciliations, and related
           records in this workspace. This cannot be undone.
         </p>
@@ -622,8 +622,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Imports &amp; Seed</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Imports &amp; Seed</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Validate and commit CSV data, seed a sample company, or reset the workspace.
         </p>
       </div>

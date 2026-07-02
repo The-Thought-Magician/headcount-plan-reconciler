@@ -220,7 +220,7 @@ export default function ActivityPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -249,18 +249,18 @@ export default function ActivityPage() {
 
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-200">Activity timeline</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Activity timeline</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search activity..."
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
             <select
               value={actionFilter}
               onChange={(e) => setActionFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               <option value="all">All actions</option>
               {actionOptions.map((a) => (
@@ -272,7 +272,7 @@ export default function ActivityPage() {
             <select
               value={entityFilter}
               onChange={(e) => setEntityFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               <option value="all">All entities</option>
               {entityOptions.map((e) => (
@@ -298,33 +298,33 @@ export default function ActivityPage() {
               {grouped.map(([day, rows]) => (
                 <div key={day}>
                   <div className="mb-3 flex items-center gap-3">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">{day}</span>
-                    <span className="text-xs text-slate-600">{rows.length} event{rows.length === 1 ? '' : 's'}</span>
-                    <div className="h-px flex-1 bg-slate-800" />
+                    <span className="text-xs font-semibold uppercase tracking-wide text-zinc-500">{day}</span>
+                    <span className="text-xs text-zinc-600">{rows.length} event{rows.length === 1 ? '' : 's'}</span>
+                    <div className="h-px flex-1 bg-zinc-800" />
                   </div>
-                  <ol className="relative space-y-4 border-l border-slate-800 pl-6">
+                  <ol className="relative space-y-4 border-l border-zinc-800 pl-6">
                     {rows.map((a) => (
                       <li key={a.id} className="relative">
-                        <span className="absolute -left-[31px] flex h-6 w-6 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-xs text-slate-400">
+                        <span className="absolute -left-[31px] flex h-6 w-6 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-xs text-zinc-400">
                           {entityGlyph(a.entity_type)}
                         </span>
-                        <div className="rounded-lg border border-slate-800 bg-slate-900/40 px-4 py-3">
+                        <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
                           <div className="flex flex-wrap items-center gap-2">
                             <Badge tone={actionTone(a.action)}>{a.action}</Badge>
                             {a.entity_type && (
-                              <span className="text-sm text-slate-300">
+                              <span className="text-sm text-zinc-300">
                                 {a.entity_type.replace(/_/g, ' ')}
                               </span>
                             )}
                             {a.entity_id && (
-                              <span className="font-mono text-xs text-slate-500">{a.entity_id.slice(0, 8)}</span>
+                              <span className="font-mono text-xs text-zinc-500">{a.entity_id.slice(0, 8)}</span>
                             )}
-                            <span className="ml-auto text-xs text-slate-500" title={new Date(a.created_at).toLocaleString()}>
+                            <span className="ml-auto text-xs text-zinc-500" title={new Date(a.created_at).toLocaleString()}>
                               {relativeTime(a.created_at)}
                             </span>
                           </div>
                           {a.user_id && (
-                            <div className="mt-1 text-xs text-slate-500">
+                            <div className="mt-1 text-xs text-zinc-500">
                               by <span className="font-mono">{a.user_id.slice(0, 12)}</span>
                             </div>
                           )}
@@ -348,11 +348,11 @@ export default function ActivityPage() {
 function DetailBlock({ detail }: { detail: Record<string, unknown> }) {
   const entries = Object.entries(detail).slice(0, 8)
   return (
-    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-400">
       {entries.map(([k, v]) => (
         <span key={k}>
-          <span className="text-slate-500">{k}:</span>{' '}
-          <span className="text-slate-300">
+          <span className="text-zinc-500">{k}:</span>{' '}
+          <span className="text-zinc-300">
             {typeof v === 'object' ? JSON.stringify(v) : String(v)}
           </span>
         </span>
@@ -365,8 +365,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Activity</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Activity</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           A chronological audit trail of every change across the workspace.
         </p>
       </div>

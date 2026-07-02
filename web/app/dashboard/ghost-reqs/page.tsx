@@ -246,7 +246,7 @@ export default function GhostReqsPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {scanNote && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{scanNote}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{scanNote}</div>
       )}
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -258,31 +258,31 @@ export default function GhostReqsPage() {
 
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-100">Triage Queue</h2>
+          <h2 className="text-sm font-semibold text-zinc-100">Triage Queue</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search reason / req / resolution"
-              className="w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none"
+              className="w-56 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none"
             />
             <select
               value={sevFilter}
               onChange={(e) => setSevFilter(e.target.value as typeof sevFilter)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               <option value="all">All severities</option>
               <option value="high">High</option>
               <option value="medium">Medium</option>
               <option value="low">Low</option>
             </select>
-            <div className="flex overflow-hidden rounded-lg border border-slate-700">
+            <div className="flex overflow-hidden rounded-lg border border-zinc-700">
               {(['open', 'resolved', 'all'] as const).map((s) => (
                 <button
                   key={s}
                   onClick={() => setStatusFilter(s)}
                   className={`px-3 py-1.5 text-xs font-medium capitalize transition-colors ${
-                    statusFilter === s ? 'bg-sky-600 text-white' : 'bg-slate-900 text-slate-400 hover:bg-slate-800'
+                    statusFilter === s ? 'bg-teal-600 text-white' : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800'
                   }`}
                 >
                   {s}
@@ -305,7 +305,7 @@ export default function GhostReqsPage() {
               />
             </div>
           ) : filtered.length === 0 ? (
-            <div className="px-5 py-8 text-center text-sm text-slate-500">No findings match these filters.</div>
+            <div className="px-5 py-8 text-center text-sm text-zinc-500">No findings match these filters.</div>
           ) : (
             <Table>
               <THead>
@@ -325,17 +325,17 @@ export default function GhostReqsPage() {
                     <TD>
                       <Badge tone={sevTone(g.severity)}>{g.severity ?? 'unknown'}</Badge>
                     </TD>
-                    <TD className="max-w-xs text-slate-300">{g.reason ?? '—'}</TD>
-                    <TD className="font-mono text-xs text-slate-400">{g.req_id ? g.req_id.slice(0, 8) : '—'}</TD>
+                    <TD className="max-w-xs text-zinc-300">{g.reason ?? '—'}</TD>
+                    <TD className="font-mono text-xs text-zinc-400">{g.req_id ? g.req_id.slice(0, 8) : '—'}</TD>
                     <TD className="text-right">
-                      <span className={(g.days_overdue ?? 0) > 30 ? 'text-rose-300' : (g.days_overdue ?? 0) > 0 ? 'text-amber-300' : 'text-slate-400'}>
+                      <span className={(g.days_overdue ?? 0) > 30 ? 'text-rose-300' : (g.days_overdue ?? 0) > 0 ? 'text-amber-300' : 'text-zinc-400'}>
                         {g.days_overdue ?? 0}
                       </span>
                     </TD>
                     <TD>
                       <Badge tone={statusTone(g.status)}>{g.status ?? 'open'}</Badge>
                     </TD>
-                    <TD className="text-slate-400">{g.resolution ?? '—'}</TD>
+                    <TD className="text-zinc-400">{g.resolution ?? '—'}</TD>
                     <TD className="text-right">
                       <div className="flex justify-end gap-1.5">
                         {isOpen(g) && (
@@ -381,20 +381,20 @@ export default function GhostReqsPage() {
       >
         {resolveTarget && (
           <div className="space-y-3">
-            <div className="rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 text-sm text-slate-300">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-sm text-zinc-300">
               <div className="flex items-center gap-2">
                 <Badge tone={sevTone(resolveTarget.severity)}>{resolveTarget.severity ?? 'unknown'}</Badge>
                 <span>{resolveTarget.reason ?? 'Ghost requisition'}</span>
               </div>
               {(resolveTarget.days_overdue ?? 0) > 0 && (
-                <div className="mt-1 text-xs text-slate-500">{resolveTarget.days_overdue} days overdue</div>
+                <div className="mt-1 text-xs text-zinc-500">{resolveTarget.days_overdue} days overdue</div>
               )}
             </div>
             <Field label="Resolution">
               <select
                 value={resolveForm.resolution}
                 onChange={(e) => setResolveForm({ ...resolveForm, resolution: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               >
                 {RESOLUTIONS.map((r) => (
                   <option key={r.value} value={r.value}>
@@ -409,7 +409,7 @@ export default function GhostReqsPage() {
                 onChange={(e) => setResolveForm({ ...resolveForm, note: e.target.value })}
                 rows={3}
                 placeholder="Context for the resolution"
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               />
             </Field>
           </div>
@@ -437,15 +437,15 @@ function Header({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-slate-100">Ghost Reqs</h1>
-        <p className="mt-0.5 text-sm text-slate-500">Triage requisitions with no plan line, past fill-by, or abandoned, then resolve them.</p>
+        <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Ghost Reqs</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">Triage requisitions with no plan line, past fill-by, or abandoned, then resolve them.</p>
       </div>
       <div className="flex flex-wrap items-center gap-2">
         {workspaces.length > 1 && (
           <select
             value={wsId}
             onChange={(e) => onSelectWorkspace(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
           >
             {workspaces.map((w) => (
               <option key={w.id} value={w.id}>
@@ -465,7 +465,7 @@ function Header({
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-zinc-400">{label}</span>
       {children}
     </label>
   )

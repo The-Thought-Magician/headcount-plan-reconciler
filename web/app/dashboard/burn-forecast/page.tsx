@@ -213,7 +213,7 @@ export default function BurnForecastPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -259,12 +259,12 @@ export default function BurnForecastPage() {
 
           <Card>
             <CardHeader className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-200">Phased burn to year-end</h2>
-              {detailLoading && <span className="text-xs text-slate-500">Loading detail...</span>}
+              <h2 className="text-sm font-semibold text-zinc-200">Phased burn to year-end</h2>
+              {detailLoading && <span className="text-xs text-zinc-500">Loading detail...</span>}
             </CardHeader>
             <CardBody>
               {series.length === 0 ? (
-                <p className="py-6 text-center text-sm text-slate-500">No phased data on this forecast run.</p>
+                <p className="py-6 text-center text-sm text-zinc-500">No phased data on this forecast run.</p>
               ) : (
                 <BurnChart series={series} budget={selected.budget_total} />
               )}
@@ -274,14 +274,14 @@ export default function BurnForecastPage() {
           {selected.assumptions && Object.keys(selected.assumptions).length > 0 && (
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-slate-200">Assumptions</h2>
+                <h2 className="text-sm font-semibold text-zinc-200">Assumptions</h2>
               </CardHeader>
               <CardBody>
                 <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
                   {Object.entries(selected.assumptions).map(([k, v]) => (
                     <div key={k}>
-                      <dt className="text-xs uppercase tracking-wide text-slate-500">{k.replace(/_/g, ' ')}</dt>
-                      <dd className="text-slate-200">{String(v)}</dd>
+                      <dt className="text-xs uppercase tracking-wide text-zinc-500">{k.replace(/_/g, ' ')}</dt>
+                      <dd className="text-zinc-200">{String(v)}</dd>
                     </div>
                   ))}
                 </dl>
@@ -294,7 +294,7 @@ export default function BurnForecastPage() {
       {/* Runs list */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Forecast runs</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Forecast runs</h2>
         </CardHeader>
         <CardBody className="p-0">
           {forecasts.length === 0 ? (
@@ -330,10 +330,10 @@ export default function BurnForecastPage() {
                   return (
                     <TR
                       key={f.id}
-                      className={`cursor-pointer ${selected?.id === f.id ? 'bg-slate-800/50' : ''}`}
+                      className={`cursor-pointer ${selected?.id === f.id ? 'bg-zinc-800/50' : ''}`}
                       onClick={() => openDetail(f)}
                     >
-                      <TD className="font-medium text-slate-200">{planName(f.plan_id)}</TD>
+                      <TD className="font-medium text-zinc-200">{planName(f.plan_id)}</TD>
                       <TD>{f.fiscal_year}</TD>
                       <TD>
                         <Badge tone={scenarioTone(f.scenario)}>{f.scenario ?? 'base'}</Badge>
@@ -375,11 +375,11 @@ export default function BurnForecastPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Plan</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Plan</label>
             <select
               value={runPlanId}
               onChange={(e) => setRunPlanId(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               {plans.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -390,22 +390,22 @@ export default function BurnForecastPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
                 Fiscal year
               </label>
               <input
                 type="number"
                 value={runYear}
                 onChange={(e) => setRunYear(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Scenario</label>
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Scenario</label>
               <select
                 value={runScenario}
                 onChange={(e) => setRunScenario(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
               >
                 {SCENARIOS.map((s) => (
                   <option key={s} value={s}>
@@ -425,8 +425,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Burn Forecast</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Burn Forecast</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Phased burn-to-year-end projection across scenarios, with variance against budget.
         </p>
       </div>
@@ -496,7 +496,7 @@ function BurnChart({
           ))}
         </svg>
       </div>
-      <div className="flex justify-between text-[11px] text-slate-500">
+      <div className="flex justify-between text-[11px] text-zinc-500">
         {cumulative.map((p) => (
           <span key={p.label}>{p.label}</span>
         ))}
@@ -512,9 +512,9 @@ function BurnChart({
         <TBody>
           {cumulative.map((p) => (
             <TR key={p.label}>
-              <TD className="font-medium text-slate-200">{p.label}</TD>
+              <TD className="font-medium text-zinc-200">{p.label}</TD>
               <TD className="text-right">{fmtMoney(p.period)}</TD>
-              <TD className="text-right text-sky-300">{fmtMoney(p.cumulative)}</TD>
+              <TD className="text-right text-teal-300">{fmtMoney(p.cumulative)}</TD>
             </TR>
           ))}
         </TBody>

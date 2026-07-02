@@ -216,44 +216,44 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-100">Net headcount vs plan</h2>
-            <Link href="/dashboard/backfills" className="text-xs text-sky-400 hover:text-sky-300">
+            <h2 className="text-sm font-semibold text-zinc-100">Net headcount vs plan</h2>
+            <Link href="/dashboard/backfills" className="text-xs text-teal-400 hover:text-teal-300">
               Backfill classifier
             </Link>
           </CardHeader>
           <CardBody className="space-y-4">
-            <Bar label="Actual filled" value={actualHc} max={Math.max(plannedHc, actualHc, 1)} tone="bg-sky-500" suffix=" HC" />
-            <Bar label="Planned" value={plannedHc} max={Math.max(plannedHc, actualHc, 1)} tone="bg-slate-600" suffix=" HC" />
-            <div className="grid grid-cols-3 gap-3 border-t border-slate-800 pt-4">
-              <MiniStat label="Growth" value={signed(num(net?.growth))} tone="text-sky-300" />
-              <MiniStat label="Backfill" value={num(net?.backfill).toLocaleString()} tone="text-slate-300" />
+            <Bar label="Actual filled" value={actualHc} max={Math.max(plannedHc, actualHc, 1)} tone="bg-teal-500" suffix=" HC" />
+            <Bar label="Planned" value={plannedHc} max={Math.max(plannedHc, actualHc, 1)} tone="bg-zinc-600" suffix=" HC" />
+            <div className="grid grid-cols-3 gap-3 border-t border-zinc-800 pt-4">
+              <MiniStat label="Growth" value={signed(num(net?.growth))} tone="text-teal-300" />
+              <MiniStat label="Backfill" value={num(net?.backfill).toLocaleString()} tone="text-zinc-300" />
               <MiniStat label="Terms" value={signed(-Math.abs(num(net?.terminations)))} tone="text-rose-300" />
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-3">
-              <div className="text-xs uppercase tracking-wide text-slate-500">Net headcount change</div>
-              <div className="mt-1 text-2xl font-semibold text-slate-100">{signed(num(net?.net))}</div>
+            <div className="rounded-lg border border-zinc-800 bg-zinc-950/40 px-4 py-3">
+              <div className="text-xs uppercase tracking-wide text-zinc-500">Net headcount change</div>
+              <div className="mt-1 text-2xl font-semibold text-zinc-100">{signed(num(net?.net))}</div>
             </div>
           </CardBody>
         </Card>
 
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-100">Burn vs budget</h2>
-            <Link href="/dashboard/burn-forecast" className="text-xs text-sky-400 hover:text-sky-300">
+            <h2 className="text-sm font-semibold text-zinc-100">Burn vs budget</h2>
+            <Link href="/dashboard/burn-forecast" className="text-xs text-teal-400 hover:text-teal-300">
               Burn forecast
             </Link>
           </CardHeader>
           <CardBody className="space-y-4">
             <Bar label="Projected burn" value={burnTotal} max={Math.max(budgetTotal, burnTotal, 1)} tone={budgetVariance > 0 ? 'bg-rose-500' : 'bg-emerald-500'} suffix="" money />
-            <Bar label="Budget" value={budgetTotal} max={Math.max(budgetTotal, burnTotal, 1)} tone="bg-slate-600" suffix="" money />
-            <div className="flex items-center justify-between border-t border-slate-800 pt-4 text-sm">
-              <span className="text-slate-400">Variance</span>
+            <Bar label="Budget" value={budgetTotal} max={Math.max(budgetTotal, burnTotal, 1)} tone="bg-zinc-600" suffix="" money />
+            <div className="flex items-center justify-between border-t border-zinc-800 pt-4 text-sm">
+              <span className="text-zinc-400">Variance</span>
               <Badge tone={budgetVariance > 0 ? 'rose' : 'green'}>
                 {budgetVariance > 0 ? 'Over budget' : 'Within budget'} · {budgetVariance > 0 ? '+' : ''}
                 {money(budgetVariance)}
               </Badge>
             </div>
-            <div className="text-xs text-slate-500">
+            <div className="text-xs text-zinc-500">
               Plan attainment {hcPct.toFixed(0)}% · Budget utilization {burnPct.toFixed(0)}%
             </div>
           </CardBody>
@@ -263,7 +263,7 @@ export default function DashboardPage() {
       {trend.length > 0 && (
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-100">Headcount &amp; burn trend</h2>
+            <h2 className="text-sm font-semibold text-zinc-100">Headcount &amp; burn trend</h2>
           </CardHeader>
           <CardBody>
             <TrendChart trend={trend} />
@@ -273,8 +273,8 @@ export default function DashboardPage() {
 
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-slate-100">Top variances</h2>
-          <Link href="/dashboard/reconciliation" className="text-xs text-sky-400 hover:text-sky-300">
+          <h2 className="text-sm font-semibold text-zinc-100">Top variances</h2>
+          <Link href="/dashboard/reconciliation" className="text-xs text-teal-400 hover:text-teal-300">
             Three-way reconciliation
           </Link>
         </CardHeader>
@@ -309,13 +309,13 @@ export default function DashboardPage() {
                   const cost = num(v.cost_variance)
                   return (
                     <TR key={`${v.team_id ?? v.label ?? i}-${i}`}>
-                      <TD className="pl-5 font-medium text-slate-200">{v.team_name ?? v.label ?? '—'}</TD>
+                      <TD className="pl-5 font-medium text-zinc-200">{v.team_name ?? v.label ?? '—'}</TD>
                       <TD>{v.level ?? '—'}</TD>
                       <TD>{v.quarter ?? '—'}</TD>
-                      <TD className={`text-right ${cv < 0 ? 'text-amber-300' : cv > 0 ? 'text-rose-300' : 'text-slate-400'}`}>
+                      <TD className={`text-right ${cv < 0 ? 'text-amber-300' : cv > 0 ? 'text-rose-300' : 'text-zinc-400'}`}>
                         {signed(cv)}
                       </TD>
-                      <TD className={`pr-5 text-right ${cost > 0 ? 'text-rose-300' : cost < 0 ? 'text-emerald-300' : 'text-slate-400'}`}>
+                      <TD className={`pr-5 text-right ${cost > 0 ? 'text-rose-300' : cost < 0 ? 'text-emerald-300' : 'text-zinc-400'}`}>
                         {cost > 0 ? '+' : ''}
                         {money(cost)}
                       </TD>
@@ -333,14 +333,14 @@ export default function DashboardPage() {
 
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-slate-100">Ghost requisitions</h2>
-          <Link href="/dashboard/ghost-reqs" className="text-xs text-sky-400 hover:text-sky-300">
+          <h2 className="text-sm font-semibold text-zinc-100">Ghost requisitions</h2>
+          <Link href="/dashboard/ghost-reqs" className="text-xs text-teal-400 hover:text-teal-300">
             Triage queue
           </Link>
         </CardHeader>
         <CardBody>
           {ghosts.length === 0 ? (
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-zinc-500">
               No ghost requisitions found. Scan from the triage queue to detect reqs with no plan line, past fill-by date, or
               abandoned status.
             </p>
@@ -350,9 +350,9 @@ export default function DashboardPage() {
                 const count = ghosts.filter((g) => (g.severity ?? '').toLowerCase() === sev).length
                 if (!count) return null
                 return (
-                  <div key={sev} className="rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-3">
-                    <div className="text-xs uppercase tracking-wide text-slate-500">{sev}</div>
-                    <div className="mt-0.5 text-lg font-semibold text-slate-100">{count}</div>
+                  <div key={sev} className="rounded-lg border border-zinc-800 bg-zinc-950/40 px-4 py-3">
+                    <div className="text-xs uppercase tracking-wide text-zinc-500">{sev}</div>
+                    <div className="mt-0.5 text-lg font-semibold text-zinc-100">{count}</div>
                   </div>
                 )
               })}
@@ -396,15 +396,15 @@ function Header({
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-100">Executive overview</h1>
-        <p className="mt-1 text-sm text-slate-500">Plan, pipeline, and actuals reconciled in one place.</p>
+        <h1 className="text-2xl font-bold tracking-tight text-zinc-100">Executive overview</h1>
+        <p className="mt-1 text-sm text-zinc-500">Plan, pipeline, and actuals reconciled in one place.</p>
       </div>
       <div className="flex items-center gap-3">
         {workspaces.length > 0 && (
           <select
             value={workspaceId}
             onChange={(e) => onSelect(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
           >
             {workspaces.map((w) => (
               <option key={w.id} value={w.id}>
@@ -444,10 +444,10 @@ function Bar({
   return (
     <div>
       <div className="mb-1 flex items-center justify-between text-xs">
-        <span className="text-slate-400">{label}</span>
-        <span className="font-medium text-slate-200">{isMoney ? money(value) : `${value.toLocaleString()}${suffix}`}</span>
+        <span className="text-zinc-400">{label}</span>
+        <span className="font-medium text-zinc-200">{isMoney ? money(value) : `${value.toLocaleString()}${suffix}`}</span>
       </div>
-      <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+      <div className="h-2.5 w-full overflow-hidden rounded-full bg-zinc-800">
         <div className={`h-full rounded-full ${tone}`} style={{ width: `${pct}%` }} />
       </div>
     </div>
@@ -457,7 +457,7 @@ function Bar({
 function MiniStat({ label, value, tone }: { label: string; value: string; tone: string }) {
   return (
     <div>
-      <div className="text-xs uppercase tracking-wide text-slate-500">{label}</div>
+      <div className="text-xs uppercase tracking-wide text-zinc-500">{label}</div>
       <div className={`mt-0.5 text-base font-semibold ${tone}`}>{value}</div>
     </div>
   )
@@ -478,26 +478,26 @@ function TrendChart({ trend }: { trend: NonNullable<DashboardReport['trend']> })
           <div key={i} className="flex flex-1 flex-col items-center gap-1">
             <div className="flex h-[150px] w-full items-end justify-center gap-1.5">
               <div
-                className="w-3 rounded-t bg-slate-600"
+                className="w-3 rounded-t bg-zinc-600"
                 style={{ height: `${(p.planned / maxHc) * 100}%` }}
                 title={`Planned ${p.planned}`}
               />
               <div
-                className="w-3 rounded-t bg-sky-500"
+                className="w-3 rounded-t bg-teal-500"
                 style={{ height: `${(p.filled / maxHc) * 100}%` }}
                 title={`Filled ${p.filled}`}
               />
             </div>
-            <div className="truncate text-[10px] text-slate-500">{p.label}</div>
+            <div className="truncate text-[10px] text-zinc-500">{p.label}</div>
           </div>
         ))}
       </div>
-      <div className="mt-3 flex items-center gap-4 text-xs text-slate-500">
+      <div className="mt-3 flex items-center gap-4 text-xs text-zinc-500">
         <span className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-sm bg-slate-600" /> Planned
+          <span className="h-2 w-2 rounded-sm bg-zinc-600" /> Planned
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-sm bg-sky-500" /> Filled
+          <span className="h-2 w-2 rounded-sm bg-teal-500" /> Filled
         </span>
       </div>
     </div>

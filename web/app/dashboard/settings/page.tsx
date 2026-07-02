@@ -232,14 +232,14 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-slate-100">Settings</h1>
-          <p className="mt-0.5 text-sm text-slate-500">Workspace configuration and billing.</p>
+          <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Settings</h1>
+          <p className="mt-0.5 text-sm text-zinc-500">Workspace configuration and billing.</p>
         </div>
         {workspaces.length > 1 && (
           <select
             value={wsId}
             onChange={(e) => onSelectWorkspace(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
           >
             {workspaces.map((w) => (
               <option key={w.id} value={w.id}>
@@ -264,8 +264,8 @@ export default function SettingsPage() {
       {/* Workspace settings */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-100">Workspace</h2>
-          <p className="mt-0.5 text-xs text-slate-500">Fiscal calendar, currency, and planning defaults used across plans and reconciliation.</p>
+          <h2 className="text-sm font-semibold text-zinc-100">Workspace</h2>
+          <p className="mt-0.5 text-xs text-zinc-500">Fiscal calendar, currency, and planning defaults used across plans and reconciliation.</p>
         </CardHeader>
         <CardBody>
           {!workspace ? (
@@ -281,14 +281,14 @@ export default function SettingsPage() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Acme FP&A"
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none"
                   />
                 </Field>
                 <Field label="Fiscal year start month">
                   <select
                     value={form.fiscal_year_start_month}
                     onChange={(e) => setForm({ ...form, fiscal_year_start_month: Number(e.target.value) })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
                   >
                     {MONTHS.map((m, i) => (
                       <option key={m} value={i + 1}>
@@ -301,7 +301,7 @@ export default function SettingsPage() {
                   <select
                     value={form.currency}
                     onChange={(e) => setForm({ ...form, currency: e.target.value })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
                   >
                     {CURRENCIES.map((c) => (
                       <option key={c} value={c}>
@@ -317,14 +317,14 @@ export default function SettingsPage() {
                     value={form.default_burden_rate}
                     onChange={(e) => setForm({ ...form, default_burden_rate: e.target.value })}
                     placeholder="e.g. 0.30 for 30%"
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none"
                   />
                 </Field>
                 <Field label="Planning granularity">
                   <select
                     value={form.planning_granularity}
                     onChange={(e) => setForm({ ...form, planning_granularity: e.target.value })}
-                    className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
                   >
                     {GRANULARITIES.map((g) => (
                       <option key={g} value={g}>
@@ -335,9 +335,9 @@ export default function SettingsPage() {
                 </Field>
               </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-800 pt-4">
-                <div className="text-xs text-slate-500">
-                  Workspace ID <span className="font-mono text-slate-400">{workspace.id}</span>
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-zinc-800 pt-4">
+                <div className="text-xs text-zinc-500">
+                  Workspace ID <span className="font-mono text-zinc-400">{workspace.id}</span>
                   {workspace.created_at && (
                     <> · created {new Date(workspace.created_at).toLocaleDateString()}</>
                   )}
@@ -360,8 +360,8 @@ export default function SettingsPage() {
       <Card>
         <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-100">Billing</h2>
-            <p className="mt-0.5 text-xs text-slate-500">Subscription plan and payment management.</p>
+            <h2 className="text-sm font-semibold text-zinc-100">Billing</h2>
+            <p className="mt-0.5 text-xs text-zinc-500">Subscription plan and payment management.</p>
           </div>
           {billing && (
             <Badge tone={billing.stripeEnabled ? 'sky' : 'slate'}>
@@ -371,22 +371,22 @@ export default function SettingsPage() {
         </CardHeader>
         <CardBody>
           {!billing ? (
-            <p className="text-sm text-slate-500">Billing information unavailable.</p>
+            <p className="text-sm text-zinc-500">Billing information unavailable.</p>
           ) : (
             <div className="space-y-5">
               <div className="flex flex-wrap items-center gap-4">
-                <div className="rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-4">
-                  <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Current plan</div>
+                <div className="rounded-xl border border-zinc-800 bg-zinc-900/60 px-5 py-4">
+                  <div className="text-xs font-medium uppercase tracking-wide text-zinc-500">Current plan</div>
                   <div className="mt-1.5 flex items-center gap-2">
-                    <span className="text-2xl font-semibold text-slate-100">{planName}</span>
+                    <span className="text-2xl font-semibold text-zinc-100">{planName}</span>
                     <Badge tone={isPro ? 'green' : 'slate'}>{isPro ? 'Pro' : 'Free'}</Badge>
                   </div>
-                  <div className="mt-1 text-xs text-slate-500">
+                  <div className="mt-1 text-xs text-zinc-500">
                     {billing.plan ? fmtPrice(billing.plan.price_cents) : '—'}
                     {sub?.status && <> · status {sub.status}</>}
                   </div>
                   {sub?.current_period_end && (
-                    <div className="mt-1 text-xs text-slate-500">
+                    <div className="mt-1 text-xs text-zinc-500">
                       Renews {new Date(sub.current_period_end).toLocaleDateString()}
                     </div>
                   )}
@@ -421,7 +421,7 @@ export default function SettingsPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-zinc-400">{label}</span>
       {children}
     </label>
   )

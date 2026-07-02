@@ -303,14 +303,14 @@ export default function ReportsPage() {
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-100">Trend Over Periods</h2>
-            <p className="mt-0.5 text-xs text-slate-500">Headcount and burn trajectory across fiscal periods.</p>
+            <h2 className="text-sm font-semibold text-zinc-100">Trend Over Periods</h2>
+            <p className="mt-0.5 text-xs text-zinc-500">Headcount and burn trajectory across fiscal periods.</p>
           </div>
-          <div className="inline-flex rounded-lg border border-slate-700 bg-slate-900 p-0.5 text-xs">
+          <div className="inline-flex rounded-lg border border-zinc-700 bg-zinc-900 p-0.5 text-xs">
             <button
               onClick={() => setTrendMetric('headcount')}
               className={`rounded-md px-3 py-1.5 font-medium transition-colors ${
-                trendMetric === 'headcount' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                trendMetric === 'headcount' ? 'bg-teal-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
               }`}
             >
               Headcount
@@ -318,7 +318,7 @@ export default function ReportsPage() {
             <button
               onClick={() => setTrendMetric('burn')}
               className={`rounded-md px-3 py-1.5 font-medium transition-colors ${
-                trendMetric === 'burn' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                trendMetric === 'burn' ? 'bg-teal-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
               }`}
             >
               Burn
@@ -327,7 +327,7 @@ export default function ReportsPage() {
         </CardHeader>
         <CardBody>
           {trend.length === 0 ? (
-            <p className="text-sm text-slate-500">No trend data yet. Run reconciliations and burn forecasts to populate this chart.</p>
+            <p className="text-sm text-zinc-500">No trend data yet. Run reconciliations and burn forecasts to populate this chart.</p>
           ) : (
             <div className="space-y-5">
               {/* SVG line/bar chart */}
@@ -341,17 +341,17 @@ export default function ReportsPage() {
                         <div key={i} className="flex flex-1 flex-col items-center justify-end gap-1">
                           <div className="flex w-full items-end justify-center gap-1" style={{ height: 160 }}>
                             <div
-                              className="w-3 rounded-t bg-sky-500"
+                              className="w-3 rounded-t bg-teal-500"
                               style={{ height: `${burnPct}%` }}
                               title={`Burn ${fmtMoney(p.burn ?? 0)}`}
                             />
                             <div
-                              className="w-3 rounded-t bg-slate-600"
+                              className="w-3 rounded-t bg-zinc-600"
                               style={{ height: `${budgetPct}%` }}
                               title={`Budget ${fmtMoney(p.budget ?? 0)}`}
                             />
                           </div>
-                          <span className="truncate text-[10px] text-slate-500">{periodLabel(p)}</span>
+                          <span className="truncate text-[10px] text-zinc-500">{periodLabel(p)}</span>
                         </div>
                       )
                     }
@@ -371,17 +371,17 @@ export default function ReportsPage() {
                             title={`Filled ${fmtNum(p.filled ?? 0)}`}
                           />
                         </div>
-                        <span className="truncate text-[10px] text-slate-500">{periodLabel(p)}</span>
+                        <span className="truncate text-[10px] text-zinc-500">{periodLabel(p)}</span>
                       </div>
                     )
                   })}
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
+              <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-400">
                 {trendMetric === 'burn' ? (
                   <>
-                    <LegendDot color="bg-sky-500" label="Burn" />
-                    <LegendDot color="bg-slate-600" label="Budget" />
+                    <LegendDot color="bg-teal-500" label="Burn" />
+                    <LegendDot color="bg-zinc-600" label="Budget" />
                   </>
                 ) : (
                   <>
@@ -406,7 +406,7 @@ export default function ReportsPage() {
                 <TBody>
                   {trend.map((p, i) => (
                     <TR key={i}>
-                      <TD className="font-medium text-slate-200">{periodLabel(p)}</TD>
+                      <TD className="font-medium text-zinc-200">{periodLabel(p)}</TD>
                       <TD className="text-right">{fmtNum(p.planned)}</TD>
                       <TD className="text-right">{fmtNum(p.filled)}</TD>
                       <TD className="text-right">{fmtNum(p.open)}</TD>
@@ -425,8 +425,8 @@ export default function ReportsPage() {
       {/* Top variances */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-100">Top Variances</h2>
-          <p className="mt-0.5 text-xs text-slate-500">Largest cost variances vs budget across the workspace.</p>
+          <h2 className="text-sm font-semibold text-zinc-100">Top Variances</h2>
+          <p className="mt-0.5 text-xs text-zinc-500">Largest cost variances vs budget across the workspace.</p>
         </CardHeader>
         <CardBody className="px-0 py-0">
           {topVariances.length === 0 ? (
@@ -450,13 +450,13 @@ export default function ReportsPage() {
               <TBody>
                 {topVariances.map((v, i) => (
                   <TR key={i}>
-                    <TD className="font-medium text-slate-200">
+                    <TD className="font-medium text-zinc-200">
                       {v.team_name ?? v.label ?? teamName(v.team_id ?? null)}
                     </TD>
                     <TD className="text-right">{fmtMoney(v.planned)}</TD>
                     <TD className="text-right">{fmtMoney(v.actual)}</TD>
                     <TD className="text-right">
-                      <span className={v.variance > 0 ? 'text-rose-300' : v.variance < 0 ? 'text-emerald-300' : 'text-slate-400'}>
+                      <span className={v.variance > 0 ? 'text-rose-300' : v.variance < 0 ? 'text-emerald-300' : 'text-zinc-400'}>
                         {v.variance >= 0 ? '+' : ''}
                         {fmtMoney(v.variance)}
                       </span>
@@ -478,20 +478,20 @@ export default function ReportsPage() {
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-100">Per-Team Reconciliation</h2>
-            <p className="mt-0.5 text-xs text-slate-500">Drill into a team&apos;s plan / open / filled cells and cost.</p>
+            <h2 className="text-sm font-semibold text-zinc-100">Per-Team Reconciliation</h2>
+            <p className="mt-0.5 text-xs text-zinc-500">Drill into a team&apos;s plan / open / filled cells and cost.</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={teamSearch}
               onChange={(e) => setTeamSearch(e.target.value)}
               placeholder="Search teams"
-              className="w-44 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none"
+              className="w-44 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none"
             />
             <select
               value={selectedTeam}
               onChange={(e) => onSelectTeam(e.target.value)}
-              className="w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="w-56 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               <option value="">Select a team…</option>
               {filteredTeams.map((t) => (
@@ -505,13 +505,13 @@ export default function ReportsPage() {
         </CardHeader>
         <CardBody>
           {teams.length === 0 ? (
-            <p className="text-sm text-slate-500">No teams in this workspace yet.</p>
+            <p className="text-sm text-zinc-500">No teams in this workspace yet.</p>
           ) : !selectedTeam ? (
-            <p className="text-sm text-slate-500">Select a team above to view its reconciliation report.</p>
+            <p className="text-sm text-zinc-500">Select a team above to view its reconciliation report.</p>
           ) : teamLoading ? (
             <PageSpinner label="Loading team report..." />
           ) : !teamReport ? (
-            <p className="text-sm text-slate-500">No report available for this team.</p>
+            <p className="text-sm text-zinc-500">No report available for this team.</p>
           ) : (
             <div className="space-y-5">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -553,25 +553,25 @@ export default function ReportsPage() {
                       const costv = Number(c.cost_variance ?? 0)
                       return (
                         <TR key={i}>
-                          <TD className="font-medium text-slate-200">{c.level ?? '—'}</TD>
+                          <TD className="font-medium text-zinc-200">{c.level ?? '—'}</TD>
                           <TD className="text-right">{c.quarter ? `Q${c.quarter}` : '—'}</TD>
                           <TD className="text-right">{fmtNum(c.planned_count)}</TD>
                           <TD className="text-right">{fmtNum(c.open_count)}</TD>
                           <TD className="text-right">{fmtNum(c.filled_count)}</TD>
                           <TD className="text-right">
-                            <span className={cv > 0 ? 'text-emerald-300' : cv < 0 ? 'text-rose-300' : 'text-slate-400'}>
+                            <span className={cv > 0 ? 'text-emerald-300' : cv < 0 ? 'text-rose-300' : 'text-zinc-400'}>
                               {cv >= 0 ? '+' : ''}
                               {fmtNum(cv)}
                             </span>
                           </TD>
                           <TD className="text-right">
-                            <span className={costv > 0 ? 'text-rose-300' : costv < 0 ? 'text-emerald-300' : 'text-slate-400'}>
+                            <span className={costv > 0 ? 'text-rose-300' : costv < 0 ? 'text-emerald-300' : 'text-zinc-400'}>
                               {costv >= 0 ? '+' : ''}
                               {fmtMoney(costv)}
                             </span>
                           </TD>
                           <TD>
-                            {c.status ? <Badge tone={statusTone(c.status)}>{c.status}</Badge> : <span className="text-slate-600">—</span>}
+                            {c.status ? <Badge tone={statusTone(c.status)}>{c.status}</Badge> : <span className="text-zinc-600">—</span>}
                           </TD>
                         </TR>
                       )
@@ -604,15 +604,15 @@ function Header({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-slate-100">Reports</h1>
-        <p className="mt-0.5 text-sm text-slate-500">Exec KPIs, per-team reconciliation, and headcount / burn trends.</p>
+        <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Reports</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">Exec KPIs, per-team reconciliation, and headcount / burn trends.</p>
       </div>
       <div className="flex flex-wrap items-center gap-2">
         {workspaces.length > 1 && (
           <select
             value={wsId}
             onChange={(e) => onSelectWorkspace(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
           >
             {workspaces.map((w) => (
               <option key={w.id} value={w.id}>

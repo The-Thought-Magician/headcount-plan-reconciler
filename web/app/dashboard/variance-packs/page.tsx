@@ -233,7 +233,7 @@ export default function VariancePacksPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -256,7 +256,7 @@ export default function VariancePacksPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -273,18 +273,18 @@ export default function VariancePacksPage() {
 
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-200">Variance packs</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Variance packs</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search period / year..."
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value as typeof filter)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               <option value="all">All sign-off</option>
               <option value="unsigned">Unsigned</option>
@@ -335,14 +335,14 @@ export default function VariancePacksPage() {
                       <TD>
                         <Link
                           href={`/dashboard/variance-packs/${p.id}`}
-                          className="font-medium text-sky-300 hover:text-sky-200"
+                          className="font-medium text-teal-300 hover:text-teal-200"
                         >
                           {p.period_label ?? 'Untitled period'}
                         </Link>
                       </TD>
-                      <TD className="text-slate-400">{p.fiscal_year ?? '—'}</TD>
-                      <TD className="text-right text-slate-300">{money(p.starting_budget)}</TD>
-                      <TD className="text-right text-slate-300">{money(p.ending_actual)}</TD>
+                      <TD className="text-zinc-400">{p.fiscal_year ?? '—'}</TD>
+                      <TD className="text-right text-zinc-300">{money(p.starting_budget)}</TD>
+                      <TD className="text-right text-zinc-300">{money(p.ending_actual)}</TD>
                       <TD className={`text-right font-medium ${variance > 0 ? 'text-rose-300' : 'text-emerald-300'}`}>
                         {signedMoney(p.total_variance)}
                       </TD>
@@ -389,25 +389,25 @@ export default function VariancePacksPage() {
         }
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-zinc-400">
             Builds a starting-budget to ending-actual bridge from the workspace plan, hires, and budget baselines for the
             selected period.
           </p>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Fiscal year</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Fiscal year</label>
             <input
               type="number"
               value={genYear}
               onChange={(e) => setGenYear(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Period label</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Period label</label>
             <select
               value={genPeriod}
               onChange={(e) => setGenPeriod(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="FY">FY (full year)</option>
               <option value="Q1">Q1</option>
@@ -428,8 +428,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Variance Packs</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Variance Packs</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Board-ready budget-to-actual bridges with dual People and Finance sign-off.
         </p>
       </div>

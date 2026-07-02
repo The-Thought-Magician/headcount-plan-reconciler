@@ -340,14 +340,14 @@ export default function BudgetPage() {
       {/* Budget vs plan vs actual bars */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-100">Budget vs Plan vs Actual — FY{fiscalYear}</h2>
+          <h2 className="text-sm font-semibold text-zinc-100">Budget vs Plan vs Actual — FY{fiscalYear}</h2>
         </CardHeader>
         <CardBody>
           {!summary || (summary.budget === 0 && summary.plan === 0 && summary.actual === 0) ? (
-            <p className="text-sm text-slate-500">No budget, plan, or actual cost recorded for this fiscal year.</p>
+            <p className="text-sm text-zinc-500">No budget, plan, or actual cost recorded for this fiscal year.</p>
           ) : (
             <div className="space-y-4">
-              <BarRow label="Budget" value={summary.budget} max={maxBar} color="bg-sky-500" />
+              <BarRow label="Budget" value={summary.budget} max={maxBar} color="bg-teal-500" />
               <BarRow label="Plan" value={summary.plan} max={maxBar} color="bg-indigo-400" />
               <BarRow label="Actual" value={summary.actual} max={maxBar} color="bg-emerald-400" />
             </div>
@@ -359,7 +359,7 @@ export default function BudgetPage() {
       {summary && summary.byTeam && summary.byTeam.length > 0 && (
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-100">By Team — Budget / Plan / Actual</h2>
+            <h2 className="text-sm font-semibold text-zinc-100">By Team — Budget / Plan / Actual</h2>
           </CardHeader>
           <CardBody className="px-0 py-0">
             <Table>
@@ -378,12 +378,12 @@ export default function BudgetPage() {
                   const v = row.actual - row.budget
                   return (
                     <TR key={(row.team_id ?? 'unassigned') + 'team'}>
-                      <TD className="font-medium text-slate-200">{row.team_name ?? teamName(row.team_id)}</TD>
+                      <TD className="font-medium text-zinc-200">{row.team_name ?? teamName(row.team_id)}</TD>
                       <TD className="text-right">{fmtMoney(row.budget)}</TD>
                       <TD className="text-right">{fmtMoney(row.plan)}</TD>
                       <TD className="text-right">{fmtMoney(row.actual)}</TD>
                       <TD className="text-right">
-                        <span className={v > 0 ? 'text-rose-300' : v < 0 ? 'text-emerald-300' : 'text-slate-400'}>
+                        <span className={v > 0 ? 'text-rose-300' : v < 0 ? 'text-emerald-300' : 'text-zinc-400'}>
                           {v >= 0 ? '+' : ''}
                           {fmtMoney(v)}
                         </span>
@@ -403,18 +403,18 @@ export default function BudgetPage() {
       {/* Filters + baseline table */}
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-100">Comp Budget Baselines</h2>
+          <h2 className="text-sm font-semibold text-zinc-100">Comp Budget Baselines</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search team / source / quarter"
-              className="w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none"
+              className="w-56 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none"
             />
             <select
               value={teamFilter}
               onChange={(e) => setTeamFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               <option value="all">All teams</option>
               {teams.map((t) => (
@@ -458,16 +458,16 @@ export default function BudgetPage() {
                   const revCount = Array.isArray(b.revisions) ? b.revisions.length : 0
                   return (
                     <TR key={b.id}>
-                      <TD className="font-medium text-slate-200">{teamName(b.team_id)}</TD>
-                      <TD className="text-slate-400">{team?.cost_center ?? '—'}</TD>
+                      <TD className="font-medium text-zinc-200">{teamName(b.team_id)}</TD>
+                      <TD className="text-zinc-400">{team?.cost_center ?? '—'}</TD>
                       <TD className="text-right">Q{b.quarter}</TD>
-                      <TD className="text-right font-medium text-slate-100">{fmtMoney(b.budgeted_cost)}</TD>
+                      <TD className="text-right font-medium text-zinc-100">{fmtMoney(b.budgeted_cost)}</TD>
                       <TD className="text-right">{b.headcount_cap ?? '—'}</TD>
                       <TD>
                         <Badge tone="slate">{b.source ?? 'manual'}</Badge>
                       </TD>
                       <TD className="text-right">
-                        {revCount > 0 ? <Badge tone="amber">{revCount}</Badge> : <span className="text-slate-600">0</span>}
+                        {revCount > 0 ? <Badge tone="amber">{revCount}</Badge> : <span className="text-zinc-600">0</span>}
                       </TD>
                       <TD className="text-right">
                         <div className="flex justify-end gap-1.5">
@@ -499,26 +499,26 @@ export default function BudgetPage() {
       {filtered.some((b) => Array.isArray(b.revisions) && b.revisions.length > 0) && (
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-100">Revision History</h2>
+            <h2 className="text-sm font-semibold text-zinc-100">Revision History</h2>
           </CardHeader>
           <CardBody className="space-y-4">
             {filtered
               .filter((b) => Array.isArray(b.revisions) && b.revisions.length > 0)
               .map((b) => (
-                <div key={`rev-${b.id}`} className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
-                  <div className="mb-2 text-sm font-medium text-slate-200">
+                <div key={`rev-${b.id}`} className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-4">
+                  <div className="mb-2 text-sm font-medium text-zinc-200">
                     {teamName(b.team_id)} · Q{b.quarter} FY{b.fiscal_year}
                   </div>
                   <ol className="space-y-1.5">
                     {(b.revisions ?? []).map((r, i) => (
-                      <li key={i} className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
-                        <span className="text-slate-500">{r.at ? new Date(r.at).toLocaleDateString() : `Rev ${i + 1}`}</span>
+                      <li key={i} className="flex flex-wrap items-center gap-2 text-xs text-zinc-400">
+                        <span className="text-zinc-500">{r.at ? new Date(r.at).toLocaleDateString() : `Rev ${i + 1}`}</span>
                         {r.from !== undefined && (
                           <span>
-                            {fmtMoney(r.from)} → <span className="text-slate-200">{fmtMoney(r.to)}</span>
+                            {fmtMoney(r.from)} → <span className="text-zinc-200">{fmtMoney(r.to)}</span>
                           </span>
                         )}
-                        {r.note && <span className="text-slate-500">— {r.note}</span>}
+                        {r.note && <span className="text-zinc-500">— {r.note}</span>}
                       </li>
                     ))}
                   </ol>
@@ -549,7 +549,7 @@ export default function BudgetPage() {
             <select
               value={form.team_id}
               onChange={(e) => setForm({ ...form, team_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               <option value="">Unassigned (workspace-wide)</option>
               {teams.map((t) => (
@@ -565,14 +565,14 @@ export default function BudgetPage() {
                 type="number"
                 value={form.fiscal_year}
                 onChange={(e) => setForm({ ...form, fiscal_year: Number(e.target.value) })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               />
             </Field>
             <Field label="Quarter">
               <select
                 value={form.quarter}
                 onChange={(e) => setForm({ ...form, quarter: Number(e.target.value) })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               >
                 {QUARTERS.map((q) => (
                   <option key={q} value={q}>
@@ -589,7 +589,7 @@ export default function BudgetPage() {
                 value={form.budgeted_cost}
                 onChange={(e) => setForm({ ...form, budgeted_cost: e.target.value })}
                 placeholder="0"
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               />
             </Field>
             <Field label="Headcount cap">
@@ -598,7 +598,7 @@ export default function BudgetPage() {
                 value={form.headcount_cap}
                 onChange={(e) => setForm({ ...form, headcount_cap: e.target.value })}
                 placeholder="optional"
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               />
             </Field>
           </div>
@@ -607,10 +607,10 @@ export default function BudgetPage() {
               value={form.source}
               onChange={(e) => setForm({ ...form, source: e.target.value })}
               placeholder="annual_plan, board_approved, …"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             />
           </Field>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-zinc-500">
             Saving a baseline for an existing team + year + quarter updates that baseline in place.
           </p>
         </div>
@@ -634,16 +634,16 @@ export default function BudgetPage() {
       >
         {reviseTarget && (
           <div className="space-y-3">
-            <div className="rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 text-sm text-slate-300">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-sm text-zinc-300">
               {teamName(reviseTarget.team_id)} · Q{reviseTarget.quarter} FY{reviseTarget.fiscal_year} ·{' '}
-              <span className="text-slate-400">current {fmtMoney(reviseTarget.budgeted_cost)}</span>
+              <span className="text-zinc-400">current {fmtMoney(reviseTarget.budgeted_cost)}</span>
             </div>
             <Field label="New budgeted cost (USD)">
               <input
                 type="number"
                 value={reviseForm.budgeted_cost}
                 onChange={(e) => setReviseForm({ ...reviseForm, budgeted_cost: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               />
             </Field>
             <Field label="Note">
@@ -652,7 +652,7 @@ export default function BudgetPage() {
                 onChange={(e) => setReviseForm({ ...reviseForm, note: e.target.value })}
                 rows={2}
                 placeholder="Reason for revision"
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               />
             </Field>
           </div>
@@ -685,15 +685,15 @@ function Header({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-slate-100">Budget Baseline</h1>
-        <p className="mt-0.5 text-sm text-slate-500">Comp budget baseline, budget vs plan vs actual, and revision history.</p>
+        <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Budget Baseline</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">Comp budget baseline, budget vs plan vs actual, and revision history.</p>
       </div>
       <div className="flex flex-wrap items-center gap-2">
         {workspaces.length > 1 && (
           <select
             value={wsId}
             onChange={(e) => onSelectWorkspace(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
           >
             {workspaces.map((w) => (
               <option key={w.id} value={w.id}>
@@ -705,7 +705,7 @@ function Header({
         <select
           value={fiscalYear}
           onChange={(e) => onSelectYear(Number(e.target.value))}
-          className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+          className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
         >
           {yearOptions.map((y) => (
             <option key={y} value={y}>
@@ -726,10 +726,10 @@ function BarRow({ label, value, max, color }: { label: string; value: number; ma
   return (
     <div>
       <div className="mb-1 flex items-center justify-between text-xs">
-        <span className="font-medium text-slate-300">{label}</span>
-        <span className="text-slate-400">{fmtMoney(value)}</span>
+        <span className="font-medium text-zinc-300">{label}</span>
+        <span className="text-zinc-400">{fmtMoney(value)}</span>
       </div>
-      <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+      <div className="h-3 w-full overflow-hidden rounded-full bg-zinc-800">
         <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
       </div>
     </div>
@@ -739,7 +739,7 @@ function BarRow({ label, value, max, color }: { label: string; value: number; ma
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-zinc-400">{label}</span>
       {children}
     </label>
   )

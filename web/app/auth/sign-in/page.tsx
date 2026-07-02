@@ -27,54 +27,54 @@ export default function SignIn() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950 px-4">
+    <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-4">
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-sky-600 text-sm font-bold text-white">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-600 text-sm font-bold text-white">
               HR
             </span>
-            <span className="text-xl font-bold tracking-tight text-slate-100">HeadcountPlanReconciler</span>
+            <span className="text-xl font-bold tracking-tight text-zinc-100">HeadcountPlanReconciler</span>
           </Link>
-          <h1 className="mt-6 text-2xl font-bold text-slate-100">Sign in to your account</h1>
-          <p className="mt-1 text-sm text-slate-500">Reconcile plan, reqs, and actuals.</p>
+          <h1 className="mt-6 text-2xl font-bold text-zinc-100">Sign in to your account</h1>
+          <p className="mt-1 text-sm text-zinc-500">Reconcile plan, reqs, and actuals.</p>
         </div>
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/60 p-8"
+          className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900/60 p-8"
         >
           {error && (
             <div className="rounded-lg border border-rose-700 bg-rose-900/30 p-3 text-sm text-rose-400">{error}</div>
           )}
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Email</label>
+            <label className="mb-1 block text-sm font-medium text-zinc-300">Email</label>
             <input
               name="email"
               type="email"
               required
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-white focus:border-teal-500 focus:outline-none"
               placeholder="you@company.com"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Password</label>
+            <label className="mb-1 block text-sm font-medium text-zinc-300">Password</label>
             <input
               name="password"
               type="password"
               required
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-white focus:border-teal-500 focus:outline-none"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-sky-600 py-3 font-semibold text-white transition-colors hover:bg-sky-500 disabled:opacity-50"
+            className="w-full rounded-lg bg-teal-600 py-3 font-semibold text-white transition-colors hover:bg-teal-500 disabled:opacity-50"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
-          <p className="text-center text-sm text-slate-400">
+          <p className="text-center text-sm text-zinc-400">
             No account?{' '}
-            <Link href="/auth/sign-up" className="text-sky-400 hover:text-sky-300">
+            <Link href="/auth/sign-up" className="text-teal-400 hover:text-teal-300">
               Sign up
             </Link>
           </p>

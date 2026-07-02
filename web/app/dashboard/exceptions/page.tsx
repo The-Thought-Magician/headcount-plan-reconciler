@@ -263,7 +263,7 @@ export default function ExceptionsPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -286,7 +286,7 @@ export default function ExceptionsPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -299,8 +299,8 @@ export default function ExceptionsPage() {
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-200">Exception requests</h2>
-            <p className="mt-0.5 text-xs text-slate-500">
+            <h2 className="text-sm font-semibold text-zinc-200">Exception requests</h2>
+            <p className="mt-0.5 text-xs text-zinc-500">
               Out-of-plan hires and reqs that need explicit approval before they count against budget.
             </p>
           </div>
@@ -309,12 +309,12 @@ export default function ExceptionsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search reason / requester..."
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value as typeof filter)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               <option value="all">All</option>
               <option value="pending">Pending</option>
@@ -361,25 +361,25 @@ export default function ExceptionsPage() {
                   return (
                     <TR key={ex.id}>
                       <TD className="max-w-xs">
-                        <div className="text-slate-200">{ex.reason}</div>
+                        <div className="text-zinc-200">{ex.reason}</div>
                         {ex.requested_by && (
-                          <div className="mt-0.5 text-xs text-slate-500">by {ex.requested_by}</div>
+                          <div className="mt-0.5 text-xs text-zinc-500">by {ex.requested_by}</div>
                         )}
                       </TD>
-                      <TD className="text-slate-300">{reqLabel(ex.req_id)}</TD>
+                      <TD className="text-zinc-300">{reqLabel(ex.req_id)}</TD>
                       <TD>
                         <Badge tone={statusTone(ex.status)}>{ex.status ?? 'pending'}</Badge>
                       </TD>
-                      <TD className="whitespace-nowrap text-xs text-slate-400">{fmtDate(ex.created_at)}</TD>
+                      <TD className="whitespace-nowrap text-xs text-zinc-400">{fmtDate(ex.created_at)}</TD>
                       <TD>
                         {ex.decided_at ? (
-                          <div className="text-xs text-slate-400">
+                          <div className="text-xs text-zinc-400">
                             <div>{fmtDate(ex.decided_at)}</div>
-                            {ex.approver && <div className="text-slate-500">by {ex.approver}</div>}
-                            {ex.decision_note && <div className="mt-0.5 text-slate-500">“{ex.decision_note}”</div>}
+                            {ex.approver && <div className="text-zinc-500">by {ex.approver}</div>}
+                            {ex.decision_note && <div className="mt-0.5 text-zinc-500">“{ex.decision_note}”</div>}
                           </div>
                         ) : (
-                          <span className="text-xs text-slate-600">—</span>
+                          <span className="text-xs text-zinc-600">—</span>
                         )}
                       </TD>
                       <TD>
@@ -421,13 +421,13 @@ export default function ExceptionsPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
               Linked requisition (optional)
             </label>
             <select
               value={newReqId}
               onChange={(e) => setNewReqId(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">No specific req</option>
               {reqs.map((r) => (
@@ -440,13 +440,13 @@ export default function ExceptionsPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Reason</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Reason</label>
             <textarea
               value={newReason}
               onChange={(e) => setNewReason(e.target.value)}
               rows={4}
               placeholder="Why does this fall outside the approved headcount plan?"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
           </div>
         </div>
@@ -474,11 +474,11 @@ export default function ExceptionsPage() {
       >
         {deciding && (
           <div className="space-y-4">
-            <div className="rounded-lg border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm text-slate-300">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-3 text-sm text-zinc-300">
               {deciding.reason}
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Decision</label>
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Decision</label>
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -486,7 +486,7 @@ export default function ExceptionsPage() {
                   className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
                     decision === 'approved'
                       ? 'border-emerald-500/40 bg-emerald-500/15 text-emerald-300'
-                      : 'border-slate-700 bg-slate-900 text-slate-400 hover:text-slate-200'
+                      : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-zinc-200'
                   }`}
                 >
                   Approve
@@ -497,7 +497,7 @@ export default function ExceptionsPage() {
                   className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
                     decision === 'denied'
                       ? 'border-rose-500/40 bg-rose-500/15 text-rose-300'
-                      : 'border-slate-700 bg-slate-900 text-slate-400 hover:text-slate-200'
+                      : 'border-zinc-700 bg-zinc-900 text-zinc-400 hover:text-zinc-200'
                   }`}
                 >
                   Deny
@@ -505,7 +505,7 @@ export default function ExceptionsPage() {
               </div>
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
                 Decision note (optional)
               </label>
               <textarea
@@ -513,7 +513,7 @@ export default function ExceptionsPage() {
                 onChange={(e) => setDecisionNote(e.target.value)}
                 rows={3}
                 placeholder="Rationale for the decision..."
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
               />
             </div>
           </div>
@@ -527,8 +527,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Exceptions</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Exceptions</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Request and approve out-of-plan hires and requisitions with a clear audit trail.
         </p>
       </div>

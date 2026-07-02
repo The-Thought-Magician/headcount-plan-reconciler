@@ -293,33 +293,33 @@ export default function ReconciliationPage() {
         {/* Runs list */}
         <Card className="h-fit">
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-100">Reconciliation Runs</h2>
+            <h2 className="text-sm font-semibold text-zinc-100">Reconciliation Runs</h2>
           </CardHeader>
           <CardBody className="px-0 py-0">
             {runs.length === 0 ? (
               <div className="px-4 py-6">
-                <p className="text-sm text-slate-500">No runs yet. Run a reconciliation to build the three-way match grid.</p>
+                <p className="text-sm text-zinc-500">No runs yet. Run a reconciliation to build the three-way match grid.</p>
               </div>
             ) : (
-              <ul className="divide-y divide-slate-800">
+              <ul className="divide-y divide-zinc-800">
                 {runs.map((r) => (
                   <li key={r.id}>
                     <button
                       onClick={() => setSelectedId(r.id)}
                       className={`w-full px-4 py-3 text-left transition-colors ${
-                        selectedId === r.id ? 'bg-sky-500/10' : 'hover:bg-slate-800/40'
+                        selectedId === r.id ? 'bg-teal-500/10' : 'hover:bg-zinc-800/40'
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-slate-200">
+                        <span className="text-sm font-medium text-zinc-200">
                           {planName(r.plan_id)}
                         </span>
                         <Badge tone={statusTone(r.status)}>{r.status}</Badge>
                       </div>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-zinc-500">
                         FY{r.fiscal_year} · Q{r.quarter} · {new Date(r.created_at).toLocaleDateString()}
                       </div>
-                      <div className="mt-1.5 flex gap-3 text-xs text-slate-400">
+                      <div className="mt-1.5 flex gap-3 text-xs text-zinc-400">
                         <span>plan {r.total_planned}</span>
                         <span>open {r.total_open}</span>
                         <span>filled {r.total_filled}</span>
@@ -350,10 +350,10 @@ export default function ReconciliationPage() {
             <>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold text-slate-100">
+                  <h2 className="text-lg font-semibold text-zinc-100">
                     {planName(detail.plan_id)} · FY{detail.fiscal_year} Q{detail.quarter}
                   </h2>
-                  <p className="text-sm text-slate-500">
+                  <p className="text-sm text-zinc-500">
                     Run {new Date(detail.created_at).toLocaleString()} · <Badge tone={statusTone(detail.status)}>{detail.status}</Badge>
                   </p>
                 </div>
@@ -387,7 +387,7 @@ export default function ReconciliationPage() {
               {/* Three-way match summary bars */}
               <Card>
                 <CardHeader>
-                  <h3 className="text-sm font-semibold text-slate-100">Three-Way Coverage</h3>
+                  <h3 className="text-sm font-semibold text-zinc-100">Three-Way Coverage</h3>
                 </CardHeader>
                 <CardBody>
                   <ThreeWayBar
@@ -401,8 +401,8 @@ export default function ReconciliationPage() {
               {/* Cell grid */}
               <Card>
                 <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <h3 className="text-sm font-semibold text-slate-100">
-                    Match Grid <span className="text-slate-500">({cells.length} cells)</span>
+                  <h3 className="text-sm font-semibold text-zinc-100">
+                    Match Grid <span className="text-zinc-500">({cells.length} cells)</span>
                   </h3>
                   <div className="flex items-center gap-2 text-xs">
                     <Badge tone="rose">{overCount} over</Badge>
@@ -410,7 +410,7 @@ export default function ReconciliationPage() {
                     <select
                       value={cellStatusFilter}
                       onChange={(e) => setCellStatusFilter(e.target.value as typeof cellStatusFilter)}
-                      className="rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs text-slate-200 focus:border-sky-500 focus:outline-none"
+                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-xs text-zinc-200 focus:border-teal-500 focus:outline-none"
                     >
                       <option value="all">All cells</option>
                       <option value="over">Over only</option>
@@ -421,7 +421,7 @@ export default function ReconciliationPage() {
                 </CardHeader>
                 <CardBody className="px-0 py-0">
                   {filteredCells.length === 0 ? (
-                    <div className="px-5 py-8 text-center text-sm text-slate-500">
+                    <div className="px-5 py-8 text-center text-sm text-zinc-500">
                       No cells match this filter.
                     </div>
                   ) : (
@@ -442,13 +442,13 @@ export default function ReconciliationPage() {
                       <TBody>
                         {filteredCells.map((c) => (
                           <TR key={c.id}>
-                            <TD className="font-medium text-slate-200">{c.level ?? '—'}</TD>
+                            <TD className="font-medium text-zinc-200">{c.level ?? '—'}</TD>
                             <TD className="text-right">Q{c.quarter}</TD>
                             <TD className="text-right">{c.planned_count}</TD>
                             <TD className="text-right text-amber-300">{c.open_count}</TD>
                             <TD className="text-right text-emerald-300">{c.filled_count}</TD>
                             <TD className="text-right">
-                              <span className={Number(c.count_variance) > 0 ? 'text-rose-300' : Number(c.count_variance) < 0 ? 'text-amber-300' : 'text-slate-400'}>
+                              <span className={Number(c.count_variance) > 0 ? 'text-rose-300' : Number(c.count_variance) < 0 ? 'text-amber-300' : 'text-zinc-400'}>
                                 {Number(c.count_variance) > 0 ? '+' : ''}
                                 {c.count_variance}
                               </span>
@@ -502,7 +502,7 @@ export default function ReconciliationPage() {
                 const p = plans.find((x) => x.id === e.target.value)
                 setRunForm({ ...runForm, plan_id: e.target.value, fiscal_year: p?.fiscal_year ?? runForm.fiscal_year })
               }}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               {plans.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -517,14 +517,14 @@ export default function ReconciliationPage() {
                 type="number"
                 value={runForm.fiscal_year}
                 onChange={(e) => setRunForm({ ...runForm, fiscal_year: Number(e.target.value) })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               />
             </Field>
             <Field label="Quarter">
               <select
                 value={runForm.quarter}
                 onChange={(e) => setRunForm({ ...runForm, quarter: Number(e.target.value) })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               >
                 {QUARTERS.map((q) => (
                   <option key={q} value={q}>
@@ -534,7 +534,7 @@ export default function ReconciliationPage() {
               </select>
             </Field>
           </div>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-zinc-500">
             Compares planned headcount against open requisitions and filled positions, then flags over- and
             under-coverage by level and quarter.
           </p>
@@ -546,35 +546,35 @@ export default function ReconciliationPage() {
         {drillCell && (
           <div className="space-y-3 text-sm">
             <div className="flex items-center gap-2">
-              <span className="text-slate-400">Level</span>
-              <span className="font-medium text-slate-100">{drillCell.level ?? '—'}</span>
+              <span className="text-zinc-400">Level</span>
+              <span className="font-medium text-zinc-100">{drillCell.level ?? '—'}</span>
               <Badge tone={cellTone(drillCell.status)}>{drillCell.status}</Badge>
             </div>
             <div className="grid grid-cols-3 gap-3">
-              <MiniStat label="Planned" value={drillCell.planned_count} tone="text-sky-300" />
+              <MiniStat label="Planned" value={drillCell.planned_count} tone="text-teal-300" />
               <MiniStat label="Open" value={drillCell.open_count} tone="text-amber-300" />
               <MiniStat label="Filled" value={drillCell.filled_count} tone="text-emerald-300" />
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-3">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-3">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-400">Count variance</span>
-                <span className={Number(drillCell.count_variance) > 0 ? 'text-rose-300' : Number(drillCell.count_variance) < 0 ? 'text-amber-300' : 'text-slate-300'}>
+                <span className="text-zinc-400">Count variance</span>
+                <span className={Number(drillCell.count_variance) > 0 ? 'text-rose-300' : Number(drillCell.count_variance) < 0 ? 'text-amber-300' : 'text-zinc-300'}>
                   {Number(drillCell.count_variance) > 0 ? '+' : ''}
                   {drillCell.count_variance}
                 </span>
               </div>
               <div className="mt-1.5 flex items-center justify-between text-sm">
-                <span className="text-slate-400">Cost variance</span>
+                <span className="text-zinc-400">Cost variance</span>
                 <span className={Number(drillCell.cost_variance) > 0 ? 'text-rose-300' : 'text-emerald-300'}>
                   {fmtMoney(drillCell.cost_variance)}
                 </span>
               </div>
               <div className="mt-1.5 flex items-center justify-between text-sm">
-                <span className="text-slate-400">Quarter</span>
-                <span className="text-slate-200">Q{drillCell.quarter}</span>
+                <span className="text-zinc-400">Quarter</span>
+                <span className="text-zinc-200">Q{drillCell.quarter}</span>
               </div>
             </div>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-zinc-500">
               {Number(drillCell.count_variance) > 0
                 ? 'Filled + open exceeds the plan for this level — overhiring risk.'
                 : Number(drillCell.count_variance) < 0
@@ -604,15 +604,15 @@ function Header({
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold tracking-tight text-slate-100">Three-Way Reconciliation</h1>
-        <p className="mt-0.5 text-sm text-slate-500">Match plan vs open reqs vs filled positions, with over/under flags and drill-down.</p>
+        <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Three-Way Reconciliation</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">Match plan vs open reqs vs filled positions, with over/under flags and drill-down.</p>
       </div>
       <div className="flex flex-wrap items-center gap-2">
         {workspaces.length > 1 && (
           <select
             value={wsId}
             onChange={(e) => onSelectWorkspace(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
           >
             {workspaces.map((w) => (
               <option key={w.id} value={w.id}>
@@ -638,27 +638,27 @@ function ThreeWayBar({ planned, open, filled }: { planned: number; open: number;
     <div className="space-y-4">
       <div>
         <div className="mb-1 flex justify-between text-xs">
-          <span className="font-medium text-slate-300">Coverage (filled + open)</span>
-          <span className="text-slate-400">
+          <span className="font-medium text-zinc-300">Coverage (filled + open)</span>
+          <span className="text-zinc-400">
             {filled + open} / {planned} planned
           </span>
         </div>
-        <div className="flex h-3 w-full overflow-hidden rounded-full bg-slate-800">
+        <div className="flex h-3 w-full overflow-hidden rounded-full bg-zinc-800">
           <div className="h-full bg-emerald-400" style={{ width: `${filledPct}%` }} title={`Filled ${filled}`} />
           <div className="h-full bg-amber-400" style={{ width: `${openPct}%` }} title={`Open ${open}`} />
         </div>
-        <div className="mt-2 flex gap-4 text-xs text-slate-400">
+        <div className="mt-2 flex gap-4 text-xs text-zinc-400">
           <Legend color="bg-emerald-400" label={`Filled ${filled}`} />
           <Legend color="bg-amber-400" label={`Open ${open}`} />
         </div>
       </div>
       <div>
         <div className="mb-1 flex justify-between text-xs">
-          <span className="font-medium text-slate-300">Plan</span>
-          <span className="text-slate-400">{planned}</span>
+          <span className="font-medium text-zinc-300">Plan</span>
+          <span className="text-zinc-400">{planned}</span>
         </div>
-        <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
-          <div className="h-full bg-sky-500" style={{ width: `${plannedPct}%` }} />
+        <div className="h-3 w-full overflow-hidden rounded-full bg-zinc-800">
+          <div className="h-full bg-teal-500" style={{ width: `${plannedPct}%` }} />
         </div>
       </div>
     </div>
@@ -676,8 +676,8 @@ function Legend({ color, label }: { color: string; label: string }) {
 
 function MiniStat({ label, value, tone }: { label: string; value: number; tone: string }) {
   return (
-    <div className="rounded-lg border border-slate-800 bg-slate-900/40 px-3 py-2 text-center">
-      <div className="text-xs text-slate-500">{label}</div>
+    <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-center">
+      <div className="text-xs text-zinc-500">{label}</div>
       <div className={`text-lg font-semibold ${tone}`}>{value}</div>
     </div>
   )
@@ -686,7 +686,7 @@ function MiniStat({ label, value, tone }: { label: string; value: number; tone: 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-zinc-400">{label}</span>
       {children}
     </label>
   )

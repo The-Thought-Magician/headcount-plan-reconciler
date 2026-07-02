@@ -240,7 +240,7 @@ export default function BackfillsPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -263,7 +263,7 @@ export default function BackfillsPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       {/* Net headcount summary */}
@@ -283,7 +283,7 @@ export default function BackfillsPage() {
       {net && (net.growth + net.backfill + net.terminations) > 0 && (
         <Card>
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Headcount composition</h2>
+            <h2 className="text-sm font-semibold text-zinc-200">Headcount composition</h2>
           </CardHeader>
           <CardBody>
             <CompositionBar growth={net.growth} backfill={net.backfill} terminations={net.terminations} />
@@ -302,18 +302,18 @@ export default function BackfillsPage() {
       {/* Links table */}
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-200">Backfill links</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Backfill links</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by id / classification..."
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value as typeof filter)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               <option value="all">All</option>
               <option value="backfill">Backfill</option>
@@ -365,11 +365,11 @@ export default function BackfillsPage() {
                     <TD>
                       <ConfidenceBar value={b.confidence} />
                     </TD>
-                    <TD className="font-mono text-xs text-slate-400">{b.req_id ? b.req_id.slice(0, 8) : '—'}</TD>
-                    <TD className="font-mono text-xs text-slate-400">
+                    <TD className="font-mono text-xs text-zinc-400">{b.req_id ? b.req_id.slice(0, 8) : '—'}</TD>
+                    <TD className="font-mono text-xs text-zinc-400">
                       {b.filled_position_id ? b.filled_position_id.slice(0, 8) : '—'}
                     </TD>
-                    <TD className="font-mono text-xs text-slate-400">
+                    <TD className="font-mono text-xs text-zinc-400">
                       {b.termination_id ? b.termination_id.slice(0, 8) : '—'}
                     </TD>
                     <TD>
@@ -419,13 +419,13 @@ export default function BackfillsPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
               Classification
             </label>
             <select
               value={editClass}
               onChange={(e) => setEditClass(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               {CLASSIFICATIONS.map((c) => (
                 <option key={c} value={c}>
@@ -435,7 +435,7 @@ export default function BackfillsPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
               Confidence (0–1 or 0–100)
             </label>
             <input
@@ -444,7 +444,7 @@ export default function BackfillsPage() {
               value={editConfidence}
               onChange={(e) => setEditConfidence(e.target.value)}
               placeholder="e.g. 0.85"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
           </div>
         </div>
@@ -457,8 +457,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Backfill Classifier</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Backfill Classifier</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Distinguish replacement hires from net growth and track true net headcount.
         </p>
       </div>
@@ -469,26 +469,26 @@ function Header({ right }: { right?: React.ReactNode }) {
 
 function MiniStat({ label, value, tone }: { label: string; value: number; tone: 'sky' | 'green' | 'slate' }) {
   const toneCls =
-    tone === 'sky' ? 'text-sky-300' : tone === 'green' ? 'text-emerald-300' : 'text-slate-300'
+    tone === 'sky' ? 'text-teal-300' : tone === 'green' ? 'text-emerald-300' : 'text-zinc-300'
   return (
-    <div className="rounded-lg border border-slate-800 bg-slate-900/40 px-4 py-3">
-      <div className="text-xs uppercase tracking-wide text-slate-500">{label}</div>
+    <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3">
+      <div className="text-xs uppercase tracking-wide text-zinc-500">{label}</div>
       <div className={`mt-1 text-lg font-semibold ${toneCls}`}>{value}</div>
     </div>
   )
 }
 
 function ConfidenceBar({ value }: { value: number | null }) {
-  if (value === null || value === undefined) return <span className="text-xs text-slate-600">—</span>
+  if (value === null || value === undefined) return <span className="text-xs text-zinc-600">—</span>
   const pct = value <= 1 ? value * 100 : value
   const clamped = Math.max(0, Math.min(100, pct))
   const tone = clamped >= 70 ? 'bg-emerald-500' : clamped >= 40 ? 'bg-amber-500' : 'bg-rose-500'
   return (
     <div className="flex items-center gap-2">
-      <div className="h-1.5 w-16 overflow-hidden rounded-full bg-slate-800">
+      <div className="h-1.5 w-16 overflow-hidden rounded-full bg-zinc-800">
         <div className={`h-full ${tone}`} style={{ width: `${clamped}%` }} />
       </div>
-      <span className="text-xs text-slate-400">{confidencePct(value)}</span>
+      <span className="text-xs text-zinc-400">{confidencePct(value)}</span>
     </div>
   )
 }
@@ -506,14 +506,14 @@ function CompositionBar({
   const seg = (n: number) => `${(n / total) * 100}%`
   return (
     <div className="space-y-3">
-      <div className="flex h-6 w-full overflow-hidden rounded-lg border border-slate-800">
+      <div className="flex h-6 w-full overflow-hidden rounded-lg border border-zinc-800">
         <div className="bg-emerald-500/70" style={{ width: seg(growth) }} title={`Growth ${growth}`} />
-        <div className="bg-sky-500/70" style={{ width: seg(backfill) }} title={`Backfill ${backfill}`} />
+        <div className="bg-teal-500/70" style={{ width: seg(backfill) }} title={`Backfill ${backfill}`} />
         <div className="bg-rose-500/70" style={{ width: seg(terminations) }} title={`Terminations ${terminations}`} />
       </div>
-      <div className="flex flex-wrap gap-4 text-xs text-slate-400">
+      <div className="flex flex-wrap gap-4 text-xs text-zinc-400">
         <Legend color="bg-emerald-500/70" label={`Growth (${growth})`} />
-        <Legend color="bg-sky-500/70" label={`Backfill (${backfill})`} />
+        <Legend color="bg-teal-500/70" label={`Backfill (${backfill})`} />
         <Legend color="bg-rose-500/70" label={`Terminations (${terminations})`} />
       </div>
     </div>

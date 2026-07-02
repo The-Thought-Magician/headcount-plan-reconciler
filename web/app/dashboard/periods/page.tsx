@@ -179,8 +179,8 @@ export default function PeriodsPage() {
   }
 
   const inputCls =
-    'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500'
-  const labelCls = 'mb-1 block text-xs font-medium text-slate-400'
+    'w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500'
+  const labelCls = 'mb-1 block text-xs font-medium text-zinc-400'
 
   if (loading && !periods.length && !error) return <PageSpinner label="Loading fiscal periods..." />
 
@@ -189,8 +189,8 @@ export default function PeriodsPage() {
       {/* Header */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-slate-100">Fiscal Periods</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold text-zinc-100">Fiscal Periods</h1>
+          <p className="mt-1 text-sm text-zinc-500">
             Define the quarters your plan, budget, and reconciliation runs roll up against.
           </p>
         </div>
@@ -199,7 +199,7 @@ export default function PeriodsPage() {
             <select
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -243,12 +243,12 @@ export default function PeriodsPage() {
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-slate-200">Generate quarters</h2>
+                <h2 className="text-sm font-semibold text-zinc-200">Generate quarters</h2>
                 {refreshing && <Spinner />}
               </div>
             </CardHeader>
             <CardBody>
-              <p className="mb-3 text-sm text-slate-500">
+              <p className="mb-3 text-sm text-zinc-500">
                 Auto-create the four quarters (Q1–Q4) for a fiscal year. Existing quarters are preserved.
               </p>
               <div className="flex flex-wrap items-end gap-3">
@@ -286,7 +286,7 @@ export default function PeriodsPage() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <h3 className="text-sm font-semibold text-slate-100">FY{fy}</h3>
+                        <h3 className="text-sm font-semibold text-zinc-100">FY{fy}</h3>
                         <Badge tone={qmap.size === 4 ? 'green' : 'amber'}>
                           {qmap.size}/4 quarters
                         </Badge>
@@ -301,33 +301,33 @@ export default function PeriodsPage() {
                           return (
                             <div
                               key={q}
-                              className="flex flex-col items-center justify-center rounded-lg border border-dashed border-slate-800 bg-slate-950/40 px-3 py-5 text-center"
+                              className="flex flex-col items-center justify-center rounded-lg border border-dashed border-zinc-800 bg-zinc-950/40 px-3 py-5 text-center"
                             >
-                              <div className="text-sm font-medium text-slate-600">Q{q}</div>
-                              <div className="mt-1 text-xs text-slate-700">not defined</div>
+                              <div className="text-sm font-medium text-zinc-600">Q{q}</div>
+                              <div className="mt-1 text-xs text-zinc-700">not defined</div>
                             </div>
                           )
                         }
                         return (
                           <div
                             key={q}
-                            className="group relative rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-3"
+                            className="group relative rounded-lg border border-zinc-800 bg-zinc-950/60 px-3 py-3"
                           >
                             <div className="flex items-center justify-between">
-                              <span className="text-sm font-semibold text-sky-300">Q{p.quarter}</span>
+                              <span className="text-sm font-semibold text-teal-300">Q{p.quarter}</span>
                               <button
                                 onClick={() => handleDelete(p.id)}
                                 disabled={busyId === p.id}
-                                className="text-xs text-slate-600 opacity-0 transition hover:text-rose-400 group-hover:opacity-100 disabled:opacity-40"
+                                className="text-xs text-zinc-600 opacity-0 transition hover:text-rose-400 group-hover:opacity-100 disabled:opacity-40"
                                 aria-label="Delete period"
                               >
                                 {busyId === p.id ? '…' : '✕'}
                               </button>
                             </div>
-                            <div className="mt-1 truncate text-xs font-medium text-slate-300" title={p.label}>
+                            <div className="mt-1 truncate text-xs font-medium text-zinc-300" title={p.label}>
                               {p.label}
                             </div>
-                            <div className="mt-2 text-[11px] text-slate-500">
+                            <div className="mt-2 text-[11px] text-zinc-500">
                               {fmtDate(p.start_date)} → {fmtDate(p.end_date)}
                             </div>
                           </div>
@@ -345,11 +345,11 @@ export default function PeriodsPage() {
             <Card>
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-semibold text-slate-200">All periods</h2>
+                  <h2 className="text-sm font-semibold text-zinc-200">All periods</h2>
                   <select
                     value={yearFilter}
                     onChange={(e) => setYearFilter(e.target.value)}
-                    className="rounded-lg border border-slate-700 bg-slate-950 px-2.5 py-1.5 text-xs text-slate-200 focus:border-sky-500 focus:outline-none"
+                    className="rounded-lg border border-zinc-700 bg-zinc-950 px-2.5 py-1.5 text-xs text-zinc-200 focus:border-teal-500 focus:outline-none"
                   >
                     <option value="all">All years</option>
                     {years.map((y) => (
@@ -375,7 +375,7 @@ export default function PeriodsPage() {
                   <TBody>
                     {filtered.map((p) => (
                       <TR key={p.id}>
-                        <TD className="pl-5 font-medium text-slate-100">{p.label}</TD>
+                        <TD className="pl-5 font-medium text-zinc-100">{p.label}</TD>
                         <TD>FY{p.fiscal_year}</TD>
                         <TD>
                           <Badge tone="slate">Q{p.quarter}</Badge>

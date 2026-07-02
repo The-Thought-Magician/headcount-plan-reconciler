@@ -242,8 +242,8 @@ export default function WorkspacesPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-100">Workspaces</h1>
-          <p className="mt-1 text-sm text-slate-500">Planning environments, settings, and member access.</p>
+          <h1 className="text-2xl font-bold tracking-tight text-zinc-100">Workspaces</h1>
+          <p className="mt-1 text-sm text-zinc-500">Planning environments, settings, and member access.</p>
         </div>
         <Button onClick={openCreate}>New workspace</Button>
       </div>
@@ -263,21 +263,21 @@ export default function WorkspacesPage() {
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <h2 className="text-sm font-semibold text-slate-100">All workspaces</h2>
+                <h2 className="text-sm font-semibold text-zinc-100">All workspaces</h2>
               </CardHeader>
               <CardBody className="!px-0 !py-0">
-                <ul className="divide-y divide-slate-800">
+                <ul className="divide-y divide-zinc-800">
                   {workspaces.map((w) => (
                     <li key={w.id}>
                       <button
                         onClick={() => setSelectedId(w.id)}
                         className={`flex w-full items-center justify-between px-5 py-3 text-left transition-colors ${
-                          w.id === selectedId ? 'bg-sky-500/10' : 'hover:bg-slate-800/40'
+                          w.id === selectedId ? 'bg-teal-500/10' : 'hover:bg-zinc-800/40'
                         }`}
                       >
                         <div>
-                          <div className="font-medium text-slate-100">{w.name}</div>
-                          <div className="mt-0.5 text-xs text-slate-500">
+                          <div className="font-medium text-zinc-100">{w.name}</div>
+                          <div className="mt-0.5 text-xs text-zinc-500">
                             {w.currency ?? 'USD'} · FY starts {MONTHS[(w.fiscal_year_start_month ?? 1) - 1] ?? '—'} ·{' '}
                             {w.planning_granularity ?? 'quarter'}
                           </div>
@@ -296,7 +296,7 @@ export default function WorkspacesPage() {
               <>
                 <Card>
                   <CardHeader className="flex items-center justify-between">
-                    <h2 className="text-sm font-semibold text-slate-100">Settings — {selected.name}</h2>
+                    <h2 className="text-sm font-semibold text-zinc-100">Settings — {selected.name}</h2>
                     <div className="flex gap-2">
                       <Button size="sm" variant="secondary" onClick={() => openEdit(selected)}>
                         Edit
@@ -324,7 +324,7 @@ export default function WorkspacesPage() {
 
                 <Card>
                   <CardHeader className="flex items-center justify-between">
-                    <h2 className="text-sm font-semibold text-slate-100">Members</h2>
+                    <h2 className="text-sm font-semibold text-zinc-100">Members</h2>
                     <Badge tone="slate">{members.length}</Badge>
                   </CardHeader>
                   <CardBody className="space-y-4">
@@ -334,22 +334,22 @@ export default function WorkspacesPage() {
                       </div>
                     )}
 
-                    <div className="flex flex-wrap items-end gap-3 rounded-lg border border-slate-800 bg-slate-950/40 p-3">
+                    <div className="flex flex-wrap items-end gap-3 rounded-lg border border-zinc-800 bg-zinc-950/40 p-3">
                       <div className="flex-1 min-w-[180px]">
-                        <label className="mb-1 block text-xs font-medium text-slate-400">User ID</label>
+                        <label className="mb-1 block text-xs font-medium text-zinc-400">User ID</label>
                         <input
                           value={memberUserId}
                           onChange={(e) => setMemberUserId(e.target.value)}
                           placeholder="user_..."
-                          className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+                          className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
                         />
                       </div>
                       <div>
-                        <label className="mb-1 block text-xs font-medium text-slate-400">Role</label>
+                        <label className="mb-1 block text-xs font-medium text-zinc-400">Role</label>
                         <select
                           value={memberRole}
                           onChange={(e) => setMemberRole(e.target.value)}
-                          className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                          className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
                         >
                           {ROLES.map((r) => (
                             <option key={r} value={r}>
@@ -366,7 +366,7 @@ export default function WorkspacesPage() {
                     {membersLoading ? (
                       <Spinner label="Loading members..." />
                     ) : members.length === 0 ? (
-                      <p className="text-sm text-slate-500">No members yet. Add a user by their ID to grant access.</p>
+                      <p className="text-sm text-zinc-500">No members yet. Add a user by their ID to grant access.</p>
                     ) : (
                       <Table>
                         <THead>
@@ -379,13 +379,13 @@ export default function WorkspacesPage() {
                         <TBody>
                           {members.map((m) => (
                             <TR key={m.id}>
-                              <TD className="pl-0 font-mono text-xs text-slate-300">{m.user_id}</TD>
+                              <TD className="pl-0 font-mono text-xs text-zinc-300">{m.user_id}</TD>
                               <TD>
                                 <select
                                   value={m.role ?? 'viewer'}
                                   onChange={(e) => changeRole(m, e.target.value)}
                                   disabled={m.user_id === selected.owner_id}
-                                  className="rounded-md border border-slate-700 bg-slate-800 px-2 py-1 text-xs text-slate-200 focus:border-sky-500 focus:outline-none disabled:opacity-60"
+                                  className="rounded-md border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-zinc-200 focus:border-teal-500 focus:outline-none disabled:opacity-60"
                                 >
                                   {ROLES.map((r) => (
                                     <option key={r} value={r}>
@@ -438,30 +438,30 @@ export default function WorkspacesPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Name</label>
+            <label className="mb-1 block text-sm font-medium text-zinc-300">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="Acme FY26 Plan"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Currency</label>
+              <label className="mb-1 block text-sm font-medium text-zinc-300">Currency</label>
               <input
                 value={form.currency}
                 onChange={(e) => setForm({ ...form, currency: e.target.value.toUpperCase() })}
                 maxLength={3}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">FY start month</label>
+              <label className="mb-1 block text-sm font-medium text-zinc-300">FY start month</label>
               <select
                 value={form.fiscal_year_start_month}
                 onChange={(e) => setForm({ ...form, fiscal_year_start_month: Number(e.target.value) })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               >
                 {MONTHS.map((m, i) => (
                   <option key={m} value={i + 1}>
@@ -471,23 +471,23 @@ export default function WorkspacesPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Default burden rate</label>
+              <label className="mb-1 block text-sm font-medium text-zinc-300">Default burden rate</label>
               <input
                 type="number"
                 step="0.01"
                 min="0"
                 value={form.default_burden_rate}
                 onChange={(e) => setForm({ ...form, default_burden_rate: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
               />
-              <p className="mt-1 text-xs text-slate-500">e.g. 0.30 = 30% loaded cost</p>
+              <p className="mt-1 text-xs text-zinc-500">e.g. 0.30 = 30% loaded cost</p>
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Planning granularity</label>
+              <label className="mb-1 block text-sm font-medium text-zinc-300">Planning granularity</label>
               <select
                 value={form.planning_granularity}
                 onChange={(e) => setForm({ ...form, planning_granularity: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
               >
                 {GRANULARITIES.map((g) => (
                   <option key={g} value={g}>
@@ -516,8 +516,8 @@ export default function WorkspacesPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
-          Delete <span className="font-semibold text-slate-100">{confirmDelete?.name}</span> and all of its plans, reqs,
+        <p className="text-sm text-zinc-300">
+          Delete <span className="font-semibold text-zinc-100">{confirmDelete?.name}</span> and all of its plans, reqs,
           hires, and reconciliations? This cannot be undone.
         </p>
       </Modal>
@@ -528,8 +528,8 @@ export default function WorkspacesPage() {
 function Field({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div>
-      <dt className="text-xs uppercase tracking-wide text-slate-500">{label}</dt>
-      <dd className="mt-0.5 font-medium text-slate-200">{value}</dd>
+      <dt className="text-xs uppercase tracking-wide text-zinc-500">{label}</dt>
+      <dd className="mt-0.5 font-medium text-zinc-200">{value}</dd>
     </div>
   )
 }

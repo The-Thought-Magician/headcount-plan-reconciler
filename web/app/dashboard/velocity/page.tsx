@@ -200,7 +200,7 @@ export default function VelocityPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -220,7 +220,7 @@ export default function VelocityPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       {/* Summary stats */}
@@ -244,16 +244,16 @@ export default function VelocityPage() {
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-200">Bottleneck attribution</h2>
-            <p className="text-xs text-slate-500">Where time-to-fill concentrates across segments.</p>
+            <h2 className="text-sm font-semibold text-zinc-200">Bottleneck attribution</h2>
+            <p className="text-xs text-zinc-500">Where time-to-fill concentrates across segments.</p>
           </div>
-          <div className="inline-flex rounded-lg border border-slate-700 bg-slate-900 p-0.5 text-xs">
+          <div className="inline-flex rounded-lg border border-zinc-700 bg-zinc-900 p-0.5 text-xs">
             {(['team', 'recruiter', 'level'] as const).map((g) => (
               <button
                 key={g}
                 onClick={() => setGroupBy(g)}
                 className={`rounded-md px-3 py-1.5 capitalize transition-colors ${
-                  groupBy === g ? 'bg-sky-500/15 text-sky-300' : 'text-slate-400 hover:text-slate-200'
+                  groupBy === g ? 'bg-teal-500/15 text-teal-300' : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
                 {g === 'level' ? 'stage' : g}
@@ -263,7 +263,7 @@ export default function VelocityPage() {
         </CardHeader>
         <CardBody>
           {activeAttr.length === 0 ? (
-            <p className="py-6 text-center text-sm text-slate-500">
+            <p className="py-6 text-center text-sm text-zinc-500">
               No attribution data yet. Recompute velocity after adding requisitions and hires.
             </p>
           ) : (
@@ -275,12 +275,12 @@ export default function VelocityPage() {
       {/* Detailed metrics table */}
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-200">Velocity metrics</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Velocity metrics</h2>
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search team / recruiter / level / stage..."
-            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500 sm:w-72"
+            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-500 sm:w-72"
           />
         </CardHeader>
         <CardBody className="p-0">
@@ -320,7 +320,7 @@ export default function VelocityPage() {
                 {filtered.map((m) => (
                   <TR key={m.id}>
                     <TD>{m.period_label ?? '—'}</TD>
-                    <TD className="font-mono text-xs text-slate-400">{m.team_id ? m.team_id.slice(0, 8) : '—'}</TD>
+                    <TD className="font-mono text-xs text-zinc-400">{m.team_id ? m.team_id.slice(0, 8) : '—'}</TD>
                     <TD>{m.level ?? '—'}</TD>
                     <TD>{m.recruiter ?? '—'}</TD>
                     <TD className="text-right">
@@ -334,9 +334,9 @@ export default function VelocityPage() {
                     <TD className="text-right text-emerald-300">{m.filled_count ?? 0}</TD>
                     <TD>
                       {m.bottleneck_stage ? (
-                        <span className="text-slate-300">{m.bottleneck_stage}</span>
+                        <span className="text-zinc-300">{m.bottleneck_stage}</span>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-zinc-600">—</span>
                       )}
                     </TD>
                   </TR>
@@ -354,8 +354,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Hiring Velocity</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Hiring Velocity</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Time-to-fill and bottleneck attribution across teams, recruiters, and pipeline stages.
         </p>
       </div>
@@ -373,15 +373,15 @@ function AttributionBars({ data }: { data: Attr[] }) {
     <div className="space-y-2.5">
       {rows.map((r) => {
         const pct = (r.value / max) * 100
-        const tone = pct >= 75 ? 'bg-rose-500/70' : pct >= 45 ? 'bg-amber-500/70' : 'bg-sky-500/70'
+        const tone = pct >= 75 ? 'bg-rose-500/70' : pct >= 45 ? 'bg-amber-500/70' : 'bg-teal-500/70'
         return (
           <div key={r.label} className="flex items-center gap-3">
-            <div className="w-32 shrink-0 truncate text-sm text-slate-300" title={r.label}>
+            <div className="w-32 shrink-0 truncate text-sm text-zinc-300" title={r.label}>
               {r.label}
             </div>
-            <div className="h-5 flex-1 overflow-hidden rounded-md bg-slate-800">
+            <div className="h-5 flex-1 overflow-hidden rounded-md bg-zinc-800">
               <div className={`flex h-full items-center justify-end rounded-md ${tone} px-2`} style={{ width: `${Math.max(pct, 6)}%` }}>
-                <span className="text-[11px] font-medium text-slate-950">{Math.round(r.value)}</span>
+                <span className="text-[11px] font-medium text-zinc-950">{Math.round(r.value)}</span>
               </div>
             </div>
           </div>

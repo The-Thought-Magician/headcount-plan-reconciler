@@ -202,8 +202,8 @@ export default function TerminationsPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-slate-100">Terminations</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Terminations</h1>
+          <p className="mt-1 text-sm text-zinc-500">
             Departures ledger. Drives net headcount and the backfill-vs-growth classifier.
           </p>
         </div>
@@ -212,7 +212,7 @@ export default function TerminationsPage() {
             <select
               value={wsId}
               onChange={(e) => setWsId(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -249,22 +249,22 @@ export default function TerminationsPage() {
 
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Departures by month</h2>
+              <h2 className="text-sm font-semibold text-zinc-200">Departures by month</h2>
             </CardHeader>
             <CardBody>
               {byMonth.length === 0 ? (
-                <p className="text-sm text-slate-500">No dated departures to chart yet.</p>
+                <p className="text-sm text-zinc-500">No dated departures to chart yet.</p>
               ) : (
                 <div className="flex items-end gap-2" style={{ height: 120 }}>
                   {byMonth.map((m) => (
                     <div key={m.month} className="flex flex-1 flex-col items-center justify-end gap-1">
-                      <div className="text-xs font-medium text-slate-300">{m.count}</div>
+                      <div className="text-xs font-medium text-zinc-300">{m.count}</div>
                       <div
                         className="w-full rounded-t bg-rose-500/60"
                         style={{ height: `${(m.count / maxMonth) * 90}px`, minHeight: 4 }}
                         title={`${m.month}: ${m.count}`}
                       />
-                      <div className="text-[10px] text-slate-500">{m.month.slice(2)}</div>
+                      <div className="text-[10px] text-zinc-500">{m.month.slice(2)}</div>
                     </div>
                   ))}
                 </div>
@@ -277,12 +277,12 @@ export default function TerminationsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search name, title, level..."
-              className="min-w-[220px] flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600"
+              className="min-w-[220px] flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600"
             />
             <select
               value={teamFilter}
               onChange={(e) => setTeamFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">All teams</option>
               {teams.map((t) => (
@@ -294,7 +294,7 @@ export default function TerminationsPage() {
             <select
               value={reasonFilter}
               onChange={(e) => setReasonFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">All reasons</option>
               {REASONS.map((r) => (
@@ -352,7 +352,7 @@ export default function TerminationsPage() {
                 <TBody>
                   {filtered.map((r) => (
                     <TR key={r.id}>
-                      <TD className="font-medium text-slate-100">{r.person_name ?? '—'}</TD>
+                      <TD className="font-medium text-zinc-100">{r.person_name ?? '—'}</TD>
                       <TD>{r.title ?? '—'}</TD>
                       <TD>{teamName(r.team_id)}</TD>
                       <TD>{r.level ?? '—'}</TD>
@@ -561,12 +561,12 @@ function BulkTermModal({
           {error || parseErr}
         </div>
       )}
-      <p className="mb-2 text-xs text-slate-500">
+      <p className="mb-2 text-xs text-zinc-500">
         Paste CSV. Columns: person_name, title, level, team_id, reason, term_date, base.
       </p>
       <textarea className={`${inp} font-mono`} rows={8} value={text} onChange={(e) => setText(e.target.value)} />
       {rows.length > 0 && (
-        <div className="mt-3 max-h-40 overflow-auto rounded-lg border border-slate-800">
+        <div className="mt-3 max-h-40 overflow-auto rounded-lg border border-zinc-800">
           <Table>
             <THead>
               <TR>
@@ -594,12 +594,12 @@ function BulkTermModal({
 }
 
 const inp =
-  'w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none'
+  'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none'
 
 function L({ label, children, full }: { label: string; children: React.ReactNode; full?: boolean }) {
   return (
     <label className={`block ${full ? 'sm:col-span-2' : ''}`}>
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
       {children}
     </label>
   )

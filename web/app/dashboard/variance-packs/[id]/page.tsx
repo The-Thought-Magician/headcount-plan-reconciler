@@ -173,10 +173,10 @@ export default function VariancePackDetailPage() {
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-slate-100">
+          <h1 className="text-xl font-semibold text-zinc-100">
             {pack.period_label ?? 'Variance pack'} {pack.fiscal_year ?? ''}
           </h1>
-          <p className="mt-0.5 text-sm text-slate-500">
+          <p className="mt-0.5 text-sm text-zinc-500">
             Budget-to-actual bridge for the period, with dual sign-off governance.
           </p>
         </div>
@@ -189,7 +189,7 @@ export default function VariancePackDetailPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -212,7 +212,7 @@ export default function VariancePackDetailPage() {
       {/* Sign-off panel */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Dual sign-off</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Dual sign-off</h2>
         </CardHeader>
         <CardBody>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -242,7 +242,7 @@ export default function VariancePackDetailPage() {
       {/* Waterfall */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Bridge waterfall</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Bridge waterfall</h2>
         </CardHeader>
         <CardBody>
           {lines.length === 0 ? (
@@ -264,7 +264,7 @@ export default function VariancePackDetailPage() {
       {/* Bridge table */}
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Bridge detail</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Bridge detail</h2>
         </CardHeader>
         <CardBody className="p-0">
           {lines.length === 0 ? (
@@ -284,38 +284,38 @@ export default function VariancePackDetailPage() {
               </THead>
               <TBody>
                 <TR>
-                  <TD className="text-slate-500">—</TD>
+                  <TD className="text-zinc-500">—</TD>
                   <TD>
                     <Badge tone="slate">starting</Badge>
                   </TD>
-                  <TD className="font-medium text-slate-200">Starting budget</TD>
-                  <TD className="text-right text-slate-400">—</TD>
-                  <TD className="text-right font-medium text-slate-200">{money(waterfall.start)}</TD>
+                  <TD className="font-medium text-zinc-200">Starting budget</TD>
+                  <TD className="text-right text-zinc-400">—</TD>
+                  <TD className="text-right font-medium text-zinc-200">{money(waterfall.start)}</TD>
                 </TR>
                 {waterfall.steps.map((s, i) => {
                   const amt = s.amount
                   return (
                     <TR key={s.line.id}>
-                      <TD className="text-slate-500">{i + 1}</TD>
+                      <TD className="text-zinc-500">{i + 1}</TD>
                       <TD>
                         <Badge tone={bucketTone(s.line.bucket)}>{s.line.bucket ?? 'adjustment'}</Badge>
                       </TD>
-                      <TD className="text-slate-300">{s.line.label ?? '—'}</TD>
+                      <TD className="text-zinc-300">{s.line.label ?? '—'}</TD>
                       <TD className={`text-right font-medium ${amt >= 0 ? 'text-rose-300' : 'text-emerald-300'}`}>
                         {signedMoney(amt)}
                       </TD>
-                      <TD className="text-right text-slate-300">{money(s.to)}</TD>
+                      <TD className="text-right text-zinc-300">{money(s.to)}</TD>
                     </TR>
                   )
                 })}
                 <TR>
-                  <TD className="text-slate-500">—</TD>
+                  <TD className="text-zinc-500">—</TD>
                   <TD>
                     <Badge tone="sky">ending</Badge>
                   </TD>
-                  <TD className="font-medium text-slate-200">Ending actual</TD>
-                  <TD className="text-right text-slate-400">—</TD>
-                  <TD className="text-right font-medium text-sky-300">{money(waterfall.end)}</TD>
+                  <TD className="font-medium text-zinc-200">Ending actual</TD>
+                  <TD className="text-right text-zinc-400">—</TD>
+                  <TD className="text-right font-medium text-teal-300">{money(waterfall.end)}</TD>
                 </TR>
               </TBody>
             </Table>
@@ -328,7 +328,7 @@ export default function VariancePackDetailPage() {
 
 function BackLink() {
   return (
-    <Link href="/dashboard/variance-packs" className="inline-flex items-center text-sm text-slate-400 hover:text-slate-200">
+    <Link href="/dashboard/variance-packs" className="inline-flex items-center text-sm text-zinc-400 hover:text-zinc-200">
       &larr; Back to variance packs
     </Link>
   )
@@ -349,15 +349,15 @@ function SignoffCard({
 }) {
   const signed = !!signedAt
   return (
-    <div className="rounded-xl border border-slate-800 bg-slate-900/40 px-5 py-4">
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 px-5 py-4">
       <div className="flex items-center justify-between">
-        <span className="text-sm font-medium text-slate-200">{title}</span>
+        <span className="text-sm font-medium text-zinc-200">{title}</span>
         {signed ? <Badge tone="green">Signed</Badge> : <Badge tone="amber">Pending</Badge>}
       </div>
       {signed ? (
-        <div className="mt-3 space-y-0.5 text-xs text-slate-500">
+        <div className="mt-3 space-y-0.5 text-xs text-zinc-500">
           <div>
-            By <span className="font-mono text-slate-300">{signedBy ?? 'unknown'}</span>
+            By <span className="font-mono text-zinc-300">{signedBy ?? 'unknown'}</span>
           </div>
           <div>{fmtDate(signedAt)}</div>
         </div>
@@ -387,7 +387,7 @@ function Waterfall({
   const offset = (lo: number) => `${(Math.max(0, lo) / maxAbs) * 100}%`
 
   const bars: { key: string; label: string; lo: number; hi: number; tone: string }[] = []
-  bars.push({ key: 'start', label: 'Start', lo: 0, hi: start, tone: 'bg-slate-500/70' })
+  bars.push({ key: 'start', label: 'Start', lo: 0, hi: start, tone: 'bg-zinc-500/70' })
   for (const s of steps) {
     const lo = Math.min(s.from, s.to)
     const hi = Math.max(s.from, s.to)
@@ -399,7 +399,7 @@ function Waterfall({
       tone: s.amount >= 0 ? 'bg-rose-500/70' : 'bg-emerald-500/70',
     })
   }
-  bars.push({ key: 'end', label: 'End', lo: 0, hi: end, tone: 'bg-sky-500/70' })
+  bars.push({ key: 'end', label: 'End', lo: 0, hi: end, tone: 'bg-teal-500/70' })
 
   return (
     <div className="space-y-2">
@@ -408,24 +408,24 @@ function Waterfall({
         const segLen = Math.abs(b.hi - b.lo)
         return (
           <div key={b.key} className="flex items-center gap-3">
-            <div className="w-40 shrink-0 truncate text-xs text-slate-400" title={b.label}>
+            <div className="w-40 shrink-0 truncate text-xs text-zinc-400" title={b.label}>
               {b.label}
             </div>
-            <div className="relative h-5 flex-1 overflow-hidden rounded bg-slate-900/60">
+            <div className="relative h-5 flex-1 overflow-hidden rounded bg-zinc-900/60">
               <div
                 className={`absolute top-0 h-full ${b.tone}`}
                 style={{ left: offset(segLo), width: scale(segLen || maxAbs * 0.002) }}
               />
             </div>
-            <div className="w-24 shrink-0 text-right text-xs font-medium text-slate-300">{money(b.hi)}</div>
+            <div className="w-24 shrink-0 text-right text-xs font-medium text-zinc-300">{money(b.hi)}</div>
           </div>
         )
       })}
-      <div className="flex flex-wrap gap-4 pt-2 text-xs text-slate-400">
-        <Legend color="bg-slate-500/70" label="Anchor" />
+      <div className="flex flex-wrap gap-4 pt-2 text-xs text-zinc-400">
+        <Legend color="bg-zinc-500/70" label="Anchor" />
         <Legend color="bg-rose-500/70" label="Increases cost" />
         <Legend color="bg-emerald-500/70" label="Reduces cost" />
-        <Legend color="bg-sky-500/70" label="Ending actual" />
+        <Legend color="bg-teal-500/70" label="Ending actual" />
       </div>
     </div>
   )

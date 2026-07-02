@@ -110,9 +110,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (!ready) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-950">
-        <div className="flex items-center gap-3 text-slate-400">
-          <span className="h-5 w-5 animate-spin rounded-full border-2 border-slate-700 border-t-sky-500" />
+      <div className="flex min-h-screen items-center justify-center bg-zinc-950">
+        <div className="flex items-center gap-3 text-zinc-400">
+          <span className="h-5 w-5 animate-spin rounded-full border-2 border-zinc-700 border-t-teal-500" />
           <span className="text-sm">Loading workspace...</span>
         </div>
       </div>
@@ -121,16 +121,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   const sidebar = (
     <nav className="flex h-full flex-col">
-      <div className="flex items-center gap-2 border-b border-slate-800 px-5 py-4">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-600 text-sm font-bold text-white">
+      <div className="flex items-center gap-2.5 border-b border-zinc-800 px-5 py-5">
+        <span className="flex h-8 w-8 items-center justify-center rounded-md bg-teal-600 text-sm font-bold text-white">
           HR
         </span>
-        <span className="text-sm font-semibold tracking-tight text-slate-100">HeadcountPlanReconciler</span>
+        <span className="text-sm font-semibold tracking-tight text-zinc-100">HeadcountPlanReconciler</span>
       </div>
-      <div className="flex-1 space-y-5 overflow-y-auto px-3 py-4">
+      <div className="flex-1 space-y-6 overflow-y-auto px-3 py-5">
         {NAV.map((section) => (
           <div key={section.title}>
-            <div className="px-2 pb-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600">
+            <div className="px-2.5 pb-2 text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
               {section.title}
             </div>
             <ul className="space-y-0.5">
@@ -140,10 +140,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className={`block rounded-lg px-3 py-1.5 text-sm transition-colors ${
+                      className={`block rounded-md px-2.5 py-1.5 text-sm transition-colors ${
                         active
-                          ? 'bg-sky-500/15 font-medium text-sky-300'
-                          : 'text-slate-400 hover:bg-slate-800 hover:text-slate-100'
+                          ? 'border-l-2 border-teal-500 bg-teal-500/10 pl-2 font-medium text-teal-300'
+                          : 'border-l-2 border-transparent text-zinc-400 hover:bg-zinc-800/60 hover:text-zinc-100'
                       }`}
                     >
                       {item.label}
@@ -159,40 +159,40 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   )
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen bg-zinc-950 text-zinc-100">
       {/* Desktop sidebar */}
-      <aside className="hidden w-64 shrink-0 border-r border-slate-800 bg-slate-900/40 lg:block">
+      <aside className="hidden w-72 shrink-0 border-r border-zinc-800 bg-zinc-900/60 lg:block">
         {sidebar}
       </aside>
 
       {/* Mobile drawer */}
       {drawerOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" onClick={() => setDrawerOpen(false)} />
-          <aside className="absolute left-0 top-0 h-full w-64 border-r border-slate-800 bg-slate-900">{sidebar}</aside>
+          <div className="absolute inset-0 bg-zinc-950/70 backdrop-blur-sm" onClick={() => setDrawerOpen(false)} />
+          <aside className="absolute left-0 top-0 h-full w-72 border-r border-zinc-800 bg-zinc-900">{sidebar}</aside>
         </div>
       )}
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-slate-800 bg-slate-950/80 px-4 py-3 backdrop-blur sm:px-6">
+        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-zinc-800 bg-zinc-950/90 px-4 py-3.5 backdrop-blur sm:px-6">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setDrawerOpen(true)}
-              className="rounded-lg border border-slate-700 px-2.5 py-1.5 text-slate-300 hover:bg-slate-800 lg:hidden"
+              className="rounded-md border border-zinc-700 px-2.5 py-1.5 text-zinc-300 hover:border-teal-600 hover:text-teal-400 lg:hidden"
               aria-label="Open navigation"
             >
               ☰
             </button>
-            <span className="text-sm font-medium text-slate-400">Workspace</span>
+            <span className="text-sm font-medium text-zinc-400">Workspace</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="hidden text-right sm:block">
-              <div className="text-sm font-medium text-slate-200">{user?.name ?? user?.email ?? 'Account'}</div>
-              {user?.email && <div className="text-xs text-slate-500">{user.email}</div>}
+              <div className="text-sm font-medium text-zinc-200">{user?.name ?? user?.email ?? 'Account'}</div>
+              {user?.email && <div className="text-xs text-zinc-500">{user.email}</div>}
             </div>
             <button
               onClick={signOut}
-              className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white"
+              className="rounded-md border border-zinc-700 px-3 py-1.5 text-sm text-zinc-300 hover:border-teal-600 hover:text-teal-400"
             >
               Sign out
             </button>

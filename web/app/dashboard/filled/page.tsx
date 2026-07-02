@@ -220,8 +220,8 @@ export default function FilledPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-slate-100">Filled Positions</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Filled Positions</h1>
+          <p className="mt-1 text-sm text-zinc-500">
             Ledger of actual hires, loaded cost, and the req / plan line each one filled.
           </p>
         </div>
@@ -230,7 +230,7 @@ export default function FilledPage() {
             <select
               value={wsId}
               onChange={(e) => setWsId(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -268,27 +268,27 @@ export default function FilledPage() {
 
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Loaded cost by team</h2>
+              <h2 className="text-sm font-semibold text-zinc-200">Loaded cost by team</h2>
             </CardHeader>
             <CardBody>
               {byTeam.length === 0 ? (
-                <p className="text-sm text-slate-500">No hires to chart yet.</p>
+                <p className="text-sm text-zinc-500">No hires to chart yet.</p>
               ) : (
                 <div className="space-y-2">
                   {byTeam.map((t) => {
                     const max = Math.max(...byTeam.map((x) => x.cost), 1)
                     return (
                       <div key={t.id} className="flex items-center gap-3">
-                        <div className="w-32 shrink-0 truncate text-xs text-slate-400" title={t.name}>
+                        <div className="w-32 shrink-0 truncate text-xs text-zinc-400" title={t.name}>
                           {t.name}
                         </div>
-                        <div className="flex h-5 flex-1 items-center rounded bg-slate-800/60">
+                        <div className="flex h-5 flex-1 items-center rounded bg-zinc-800/60">
                           <div className="h-5 rounded bg-emerald-500/70" style={{ width: `${(t.cost / max) * 100}%` }} />
                         </div>
-                        <div className="w-24 shrink-0 text-right text-xs font-medium text-slate-300">
+                        <div className="w-24 shrink-0 text-right text-xs font-medium text-zinc-300">
                           {money(t.cost)}
                         </div>
-                        <div className="w-10 shrink-0 text-right text-xs text-slate-500">{t.count}</div>
+                        <div className="w-10 shrink-0 text-right text-xs text-zinc-500">{t.count}</div>
                       </div>
                     )
                   })}
@@ -302,12 +302,12 @@ export default function FilledPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search name, title, level..."
-              className="min-w-[220px] flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600"
+              className="min-w-[220px] flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600"
             />
             <select
               value={teamFilter}
               onChange={(e) => setTeamFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">All teams</option>
               {teams.map((t) => (
@@ -319,7 +319,7 @@ export default function FilledPage() {
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">All types</option>
               {HIRE_TYPES.map((h) => (
@@ -375,7 +375,7 @@ export default function FilledPage() {
                 <TBody>
                   {filtered.map((f) => (
                     <TR key={f.id}>
-                      <TD className="font-medium text-slate-100">{f.person_name ?? '—'}</TD>
+                      <TD className="font-medium text-zinc-100">{f.person_name ?? '—'}</TD>
                       <TD>{f.title ?? '—'}</TD>
                       <TD>{teamName(f.team_id)}</TD>
                       <TD>{f.level ?? '—'}</TD>
@@ -560,7 +560,7 @@ function FilledFormModal({
         </L>
       </div>
       {(form.actual_base != null || form.actual_variable != null) && (
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-zinc-500">
           Loaded cost preview:{' '}
           <span className="font-medium text-emerald-300">{money(loadedCost(form as Filled))}</span>
         </p>
@@ -657,13 +657,13 @@ function BulkFilledModal({
           {error || parseErr}
         </div>
       )}
-      <p className="mb-2 text-xs text-slate-500">
+      <p className="mb-2 text-xs text-zinc-500">
         Paste CSV. Columns: person_name, title, level, team_id, req_id, hire_type, actual_start, actual_base,
         actual_variable, burden_rate, backfill_of.
       </p>
       <textarea className={`${inp} font-mono`} rows={8} value={text} onChange={(e) => setText(e.target.value)} />
       {rows.length > 0 && (
-        <div className="mt-3 max-h-40 overflow-auto rounded-lg border border-slate-800">
+        <div className="mt-3 max-h-40 overflow-auto rounded-lg border border-zinc-800">
           <Table>
             <THead>
               <TR>
@@ -691,12 +691,12 @@ function BulkFilledModal({
 }
 
 const inp =
-  'w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none'
+  'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none'
 
 function L({ label, children, full }: { label: string; children: React.ReactNode; full?: boolean }) {
   return (
     <label className={`block ${full ? 'sm:col-span-2' : ''}`}>
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
       {children}
     </label>
   )

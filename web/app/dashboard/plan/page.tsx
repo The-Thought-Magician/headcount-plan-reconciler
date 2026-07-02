@@ -223,8 +223,8 @@ export default function PlansPage() {
   }
 
   const inputCls =
-    'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500'
-  const labelCls = 'mb-1 block text-xs font-medium text-slate-400'
+    'w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500'
+  const labelCls = 'mb-1 block text-xs font-medium text-zinc-400'
 
   const approvedCount = plans.filter((p) => p.status === 'approved' || p.status === 'active').length
   const draftCount = plans.filter((p) => p.status === 'draft').length
@@ -235,8 +235,8 @@ export default function PlansPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-slate-100">Headcount Plans</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold text-zinc-100">Headcount Plans</h1>
+          <p className="mt-1 text-sm text-zinc-500">
             Versioned hiring plans per fiscal year. Draft, route for approval, clone to a new version.
           </p>
         </div>
@@ -245,7 +245,7 @@ export default function PlansPage() {
             <select
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -284,7 +284,7 @@ export default function PlansPage() {
             <CardHeader>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-2">
-                  <h2 className="text-sm font-semibold text-slate-200">All plans</h2>
+                  <h2 className="text-sm font-semibold text-zinc-200">All plans</h2>
                   {refreshing && <Spinner />}
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -292,12 +292,12 @@ export default function PlansPage() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search name or year..."
-                    className="w-48 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm text-slate-100 placeholder-slate-600 focus:border-sky-500 focus:outline-none"
+                    className="w-48 rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-sm text-zinc-100 placeholder-zinc-600 focus:border-teal-500 focus:outline-none"
                   />
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="rounded-lg border border-slate-700 bg-slate-950 px-2.5 py-1.5 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+                    className="rounded-lg border border-zinc-700 bg-zinc-950 px-2.5 py-1.5 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
                   >
                     <option value="all">All statuses</option>
                     {statuses.map((s) => (
@@ -348,12 +348,12 @@ export default function PlansPage() {
                           <TD className="pl-5">
                             <Link
                               href={`/dashboard/plan/${p.id}`}
-                              className="font-medium text-sky-300 hover:text-sky-200 hover:underline"
+                              className="font-medium text-teal-300 hover:text-teal-200 hover:underline"
                             >
                               {p.name}
                             </Link>
                             {versionCount > 1 && (
-                              <span className="ml-2 text-xs text-slate-500">{versionCount} versions</span>
+                              <span className="ml-2 text-xs text-zinc-500">{versionCount} versions</span>
                             )}
                           </TD>
                           <TD>FY{p.fiscal_year}</TD>
@@ -363,10 +363,10 @@ export default function PlansPage() {
                           <TD>
                             <Badge tone={STATUS_TONE[p.status] ?? 'slate'}>{p.status}</Badge>
                           </TD>
-                          <TD className="text-xs text-slate-400">
+                          <TD className="text-xs text-zinc-400">
                             {p.approved_at ? fmtDate(p.approved_at) : '—'}
                           </TD>
-                          <TD className="text-xs text-slate-400">{fmtDate(p.updated_at)}</TD>
+                          <TD className="text-xs text-zinc-400">{fmtDate(p.updated_at)}</TD>
                           <TD className="pr-5">
                             <div className="flex items-center justify-end gap-1.5">
                               <Link href={`/dashboard/plan/${p.id}`}>
@@ -437,8 +437,8 @@ export default function PlansPage() {
               className={inputCls}
             />
           </div>
-          <p className="text-xs text-slate-500">
-            New plans start at version 1 with status <span className="text-slate-300">draft</span>. Add plan lines from
+          <p className="text-xs text-zinc-500">
+            New plans start at version 1 with status <span className="text-zinc-300">draft</span>. Add plan lines from
             the editor, then route for approval.
           </p>
         </div>
@@ -484,7 +484,7 @@ export default function PlansPage() {
                 ))}
               </select>
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-xs text-slate-500">
+            <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 px-3 py-2 text-xs text-zinc-500">
               FY{editing.fiscal_year} · version {editing.version} · created {fmtDate(editing.created_at)}
             </div>
           </div>

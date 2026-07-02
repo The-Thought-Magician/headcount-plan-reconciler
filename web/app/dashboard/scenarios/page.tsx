@@ -393,7 +393,7 @@ export default function ScenariosPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -413,14 +413,14 @@ export default function ScenariosPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       <div className="grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
         {/* Scenario list */}
         <Card className="h-fit">
           <CardHeader>
-            <h2 className="text-sm font-semibold text-slate-200">Scenarios</h2>
+            <h2 className="text-sm font-semibold text-zinc-200">Scenarios</h2>
           </CardHeader>
           <CardBody className="p-3">
             {scenarios.length === 0 ? (
@@ -443,16 +443,16 @@ export default function ScenariosPage() {
                         onClick={() => selectScenario(s.id)}
                         className={`w-full rounded-lg border px-3 py-2.5 text-left transition-colors ${
                           active
-                            ? 'border-sky-500/40 bg-sky-500/10'
-                            : 'border-slate-800 bg-slate-900/40 hover:bg-slate-800/40'
+                            ? 'border-teal-500/40 bg-teal-500/10'
+                            : 'border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800/40'
                         }`}
                       >
                         <div className="flex items-center justify-between gap-2">
-                          <span className="truncate text-sm font-medium text-slate-200">{s.name}</span>
+                          <span className="truncate text-sm font-medium text-zinc-200">{s.name}</span>
                           {s.is_frozen && <Badge tone="sky">Frozen</Badge>}
                         </div>
                         {s.description && (
-                          <p className="mt-0.5 truncate text-xs text-slate-500">{s.description}</p>
+                          <p className="mt-0.5 truncate text-xs text-zinc-500">{s.description}</p>
                         )}
                       </button>
                     </li>
@@ -479,11 +479,11 @@ export default function ScenariosPage() {
                 <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h2 className="text-base font-semibold text-slate-100">{selected.name}</h2>
+                      <h2 className="text-base font-semibold text-zinc-100">{selected.name}</h2>
                       {selected.is_frozen && <Badge tone="sky">Frozen</Badge>}
                     </div>
-                    {selected.description && <p className="mt-0.5 text-sm text-slate-500">{selected.description}</p>}
-                    <p className="mt-0.5 text-xs text-slate-600">
+                    {selected.description && <p className="mt-0.5 text-sm text-zinc-500">{selected.description}</p>}
+                    <p className="mt-0.5 text-xs text-zinc-600">
                       Base plan: {plans.find((p) => p.id === selected.plan_id)?.name ?? '—'}
                     </p>
                   </div>
@@ -526,7 +526,7 @@ export default function ScenariosPage() {
               {/* Overrides */}
               <Card>
                 <CardHeader className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-slate-200">What-if overrides</h3>
+                  <h3 className="text-sm font-semibold text-zinc-200">What-if overrides</h3>
                   <Button
                     size="sm"
                     variant="secondary"
@@ -561,12 +561,12 @@ export default function ScenariosPage() {
                       <TBody>
                         {overrides.map((o) => (
                           <TR key={o.id}>
-                            <TD className="text-slate-300">{lineLabel(o.plan_line_id)}</TD>
-                            <TD className="text-right text-slate-300">
+                            <TD className="text-zinc-300">{lineLabel(o.plan_line_id)}</TD>
+                            <TD className="text-right text-zinc-300">
                               {o.override_count === null || o.override_count === undefined ? '—' : o.override_count}
                             </TD>
-                            <TD className="text-slate-300">{o.override_start_quarter ?? '—'}</TD>
-                            <TD className="text-right text-slate-300">{money(o.override_base)}</TD>
+                            <TD className="text-zinc-300">{o.override_start_quarter ?? '—'}</TD>
+                            <TD className="text-right text-zinc-300">{money(o.override_base)}</TD>
                           </TR>
                         ))}
                       </TBody>
@@ -578,7 +578,7 @@ export default function ScenariosPage() {
               {/* Diff */}
               <Card>
                 <CardHeader>
-                  <h3 className="text-sm font-semibold text-slate-200">Diff vs base plan</h3>
+                  <h3 className="text-sm font-semibold text-zinc-200">Diff vs base plan</h3>
                 </CardHeader>
                 <CardBody className="p-0">
                   {diffRows.length === 0 ? (
@@ -609,33 +609,33 @@ export default function ScenariosPage() {
                             r.role_title ?? lineLabel((r.plan_line_id as string) ?? null)
                           return (
                             <TR key={(r.plan_line_id as string) ?? i}>
-                              <TD className="text-slate-300">
+                              <TD className="text-zinc-300">
                                 {label}
-                                {r.level ? <span className="ml-1 text-xs text-slate-500">{r.level}</span> : null}
+                                {r.level ? <span className="ml-1 text-xs text-zinc-500">{r.level}</span> : null}
                               </TD>
-                              <TD className="text-right text-slate-400">{r.base_count ?? '—'}</TD>
-                              <TD className="text-right text-slate-200">{r.scenario_count ?? '—'}</TD>
-                              <TD className={`text-right font-medium ${cd > 0 ? 'text-amber-300' : cd < 0 ? 'text-emerald-300' : 'text-slate-500'}`}>
+                              <TD className="text-right text-zinc-400">{r.base_count ?? '—'}</TD>
+                              <TD className="text-right text-zinc-200">{r.scenario_count ?? '—'}</TD>
+                              <TD className={`text-right font-medium ${cd > 0 ? 'text-amber-300' : cd < 0 ? 'text-emerald-300' : 'text-zinc-500'}`}>
                                 {signedNum(cd)}
                               </TD>
-                              <TD className="text-right text-slate-400">{money(r.base_cost)}</TD>
-                              <TD className="text-right text-slate-200">{money(r.scenario_cost)}</TD>
-                              <TD className={`text-right font-medium ${costd > 0 ? 'text-rose-300' : costd < 0 ? 'text-emerald-300' : 'text-slate-500'}`}>
+                              <TD className="text-right text-zinc-400">{money(r.base_cost)}</TD>
+                              <TD className="text-right text-zinc-200">{money(r.scenario_cost)}</TD>
+                              <TD className={`text-right font-medium ${costd > 0 ? 'text-rose-300' : costd < 0 ? 'text-emerald-300' : 'text-zinc-500'}`}>
                                 {signedMoney(costd)}
                               </TD>
                             </TR>
                           )
                         })}
-                        <TR className="border-t-2 border-slate-700 font-semibold">
-                          <TD className="text-slate-200">Total</TD>
-                          <TD className="text-right text-slate-500">—</TD>
-                          <TD className="text-right text-slate-500">—</TD>
-                          <TD className={`text-right ${diffTotals.countDelta > 0 ? 'text-amber-300' : diffTotals.countDelta < 0 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                        <TR className="border-t-2 border-zinc-700 font-semibold">
+                          <TD className="text-zinc-200">Total</TD>
+                          <TD className="text-right text-zinc-500">—</TD>
+                          <TD className="text-right text-zinc-500">—</TD>
+                          <TD className={`text-right ${diffTotals.countDelta > 0 ? 'text-amber-300' : diffTotals.countDelta < 0 ? 'text-emerald-300' : 'text-zinc-300'}`}>
                             {signedNum(diffTotals.countDelta)}
                           </TD>
-                          <TD className="text-right text-slate-500">—</TD>
-                          <TD className="text-right text-slate-500">—</TD>
-                          <TD className={`text-right ${diffTotals.costDelta > 0 ? 'text-rose-300' : diffTotals.costDelta < 0 ? 'text-emerald-300' : 'text-slate-300'}`}>
+                          <TD className="text-right text-zinc-500">—</TD>
+                          <TD className="text-right text-zinc-500">—</TD>
+                          <TD className={`text-right ${diffTotals.costDelta > 0 ? 'text-rose-300' : diffTotals.costDelta < 0 ? 'text-emerald-300' : 'text-zinc-300'}`}>
                             {signedMoney(diffTotals.costDelta)}
                           </TD>
                         </TR>
@@ -667,30 +667,30 @@ export default function ScenariosPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Name</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Name</label>
             <input
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               placeholder="e.g. Conservative hiring"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Description</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Description</label>
             <textarea
               value={newDesc}
               onChange={(e) => setNewDesc(e.target.value)}
               rows={2}
               placeholder="Optional notes about this what-if"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Base plan</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Base plan</label>
             <select
               value={newPlanId}
               onChange={(e) => setNewPlanId(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">No plan</option>
               {plans.map((p) => (
@@ -702,7 +702,7 @@ export default function ScenariosPage() {
               ))}
             </select>
             {plans.length === 0 && (
-              <p className="mt-1 text-xs text-slate-500">No plans yet. Create one on the Headcount Plans page.</p>
+              <p className="mt-1 text-xs text-zinc-500">No plans yet. Create one on the Headcount Plans page.</p>
             )}
           </div>
         </div>
@@ -726,11 +726,11 @@ export default function ScenariosPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Plan line</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Plan line</label>
             <select
               value={ovLineId}
               onChange={(e) => setOvLineId(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               {planLines.length === 0 && <option value="">No plan lines available</option>}
               {planLines.map((l) => (
@@ -744,7 +744,7 @@ export default function ScenariosPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
                 Override count
               </label>
               <input
@@ -752,17 +752,17 @@ export default function ScenariosPage() {
                 value={ovCount}
                 onChange={(e) => setOvCount(e.target.value)}
                 placeholder="leave blank to keep"
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
                 Override start Q
               </label>
               <select
                 value={ovStartQ}
                 onChange={(e) => setOvStartQ(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
               >
                 <option value="">keep</option>
                 {QUARTERS.map((q) => (
@@ -774,7 +774,7 @@ export default function ScenariosPage() {
             </div>
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
               Override base salary
             </label>
             <input
@@ -782,7 +782,7 @@ export default function ScenariosPage() {
               value={ovBase}
               onChange={(e) => setOvBase(e.target.value)}
               placeholder="leave blank to keep"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
           </div>
         </div>
@@ -795,8 +795,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Scenarios</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Scenarios</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Layer what-if overrides on a headcount plan and compare the diff against the approved base.
         </p>
       </div>

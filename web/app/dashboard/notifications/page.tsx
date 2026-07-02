@@ -143,8 +143,8 @@ export default function NotificationsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-slate-100">Notifications</h1>
-          <p className="mt-0.5 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold text-zinc-100">Notifications</h1>
+          <p className="mt-0.5 text-sm text-zinc-500">
             Alerts, approvals, and reconciliation events across your workspaces.
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function NotificationsPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
@@ -173,22 +173,22 @@ export default function NotificationsPage() {
 
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-200">Inbox</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Inbox</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search notifications..."
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
-            <div className="flex rounded-lg border border-slate-700 bg-slate-900 p-0.5">
+            <div className="flex rounded-lg border border-zinc-700 bg-zinc-900 p-0.5">
               {(['all', 'unread', 'read'] as const).map((f) => (
                 <button
                   key={f}
                   type="button"
                   onClick={() => setFilter(f)}
                   className={`rounded-md px-3 py-1 text-xs font-medium capitalize transition-colors ${
-                    filter === f ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'
+                    filter === f ? 'bg-teal-600 text-white' : 'text-zinc-400 hover:text-zinc-200'
                   }`}
                 >
                   {f}
@@ -210,33 +210,33 @@ export default function NotificationsPage() {
               />
             </div>
           ) : (
-            <ul className="divide-y divide-slate-800">
+            <ul className="divide-y divide-zinc-800">
               {filtered.map((n) => (
                 <li
                   key={n.id}
-                  className={`flex items-start gap-3 px-5 py-4 transition-colors hover:bg-slate-800/40 ${
-                    n.is_read ? '' : 'bg-sky-500/5'
+                  className={`flex items-start gap-3 px-5 py-4 transition-colors hover:bg-zinc-800/40 ${
+                    n.is_read ? '' : 'bg-teal-500/5'
                   }`}
                 >
                   <span
                     className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${
-                      n.is_read ? 'bg-slate-700' : 'bg-sky-400'
+                      n.is_read ? 'bg-zinc-700' : 'bg-teal-400'
                     }`}
                     aria-hidden
                   />
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
                       {n.type && <Badge tone={typeTone(n.type)}>{n.type}</Badge>}
-                      <span className={`text-sm font-medium ${n.is_read ? 'text-slate-300' : 'text-slate-100'}`}>
+                      <span className={`text-sm font-medium ${n.is_read ? 'text-zinc-300' : 'text-zinc-100'}`}>
                         {n.title}
                       </span>
-                      <span className="text-xs text-slate-500">{fmtRelative(n.created_at)}</span>
+                      <span className="text-xs text-zinc-500">{fmtRelative(n.created_at)}</span>
                     </div>
-                    {n.body && <p className="mt-1 text-sm text-slate-400">{n.body}</p>}
+                    {n.body && <p className="mt-1 text-sm text-zinc-400">{n.body}</p>}
                     {n.link && (
                       <Link
                         href={n.link}
-                        className="mt-1.5 inline-block text-xs font-medium text-sky-400 hover:text-sky-300"
+                        className="mt-1.5 inline-block text-xs font-medium text-teal-400 hover:text-teal-300"
                       >
                         View details →
                       </Link>

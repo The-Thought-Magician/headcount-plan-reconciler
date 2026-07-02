@@ -384,7 +384,7 @@ export default function AlertsPage() {
               <select
                 value={wsId}
                 onChange={(e) => switchWorkspace(e.target.value)}
-                className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+                className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
               >
                 {workspaces.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -407,7 +407,7 @@ export default function AlertsPage() {
         <div className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</div>
       )}
       {notice && (
-        <div className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-300">{notice}</div>
+        <div className="rounded-lg border border-teal-500/30 bg-teal-500/10 px-4 py-3 text-sm text-teal-300">{notice}</div>
       )}
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -421,8 +421,8 @@ export default function AlertsPage() {
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-sm font-semibold text-slate-200">Thresholds</h2>
-            <p className="mt-0.5 text-xs text-slate-500">
+            <h2 className="text-sm font-semibold text-zinc-200">Thresholds</h2>
+            <p className="mt-0.5 text-xs text-zinc-500">
               Rules evaluated against the latest reconciliation and burn forecast to raise alerts.
             </p>
           </div>
@@ -456,10 +456,10 @@ export default function AlertsPage() {
               <TBody>
                 {thresholds.map((t) => (
                   <TR key={t.id}>
-                    <TD className="font-medium text-slate-200">{t.name}</TD>
+                    <TD className="font-medium text-zinc-200">{t.name}</TD>
                     <TD>
-                      <span className="text-slate-300">{metricLabel(t.metric)}</span>{' '}
-                      <span className="font-mono text-slate-400">
+                      <span className="text-zinc-300">{metricLabel(t.metric)}</span>{' '}
+                      <span className="font-mono text-zinc-400">
                         {comparatorSymbol(t.comparator)} {t.value}
                       </span>
                     </TD>
@@ -490,18 +490,18 @@ export default function AlertsPage() {
       {/* Alerts queue */}
       <Card>
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-sm font-semibold text-slate-200">Alert queue</h2>
+          <h2 className="text-sm font-semibold text-zinc-200">Alert queue</h2>
           <div className="flex flex-wrap items-center gap-2">
             <input
               value={alertSearch}
               onChange={(e) => setAlertSearch(e.target.value)}
               placeholder="Search alerts..."
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-500"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
             <select
               value={sevFilter}
               onChange={(e) => setSevFilter(e.target.value as typeof sevFilter)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               <option value="all">All severities</option>
               <option value="critical">Critical</option>
@@ -512,7 +512,7 @@ export default function AlertsPage() {
             <select
               value={alertFilter}
               onChange={(e) => setAlertFilter(e.target.value as typeof alertFilter)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200"
             >
               <option value="all">All statuses</option>
               <option value="open">Open</option>
@@ -562,13 +562,13 @@ export default function AlertsPage() {
                         <Badge tone={severityTone(a.severity)}>{a.severity ?? 'info'}</Badge>
                       </TD>
                       <TD>
-                        <div className="font-medium text-slate-200">{a.title}</div>
-                        {a.detail && <div className="mt-0.5 text-xs text-slate-500">{a.detail}</div>}
+                        <div className="font-medium text-zinc-200">{a.title}</div>
+                        {a.detail && <div className="mt-0.5 text-xs text-zinc-500">{a.detail}</div>}
                       </TD>
                       <TD>
                         <Badge tone={statusTone(a.status)}>{a.status ?? 'open'}</Badge>
                       </TD>
-                      <TD className="whitespace-nowrap text-xs text-slate-400">{fmtDate(a.created_at)}</TD>
+                      <TD className="whitespace-nowrap text-xs text-zinc-400">{fmtDate(a.created_at)}</TD>
                       <TD>
                         <div className="flex justify-end gap-1.5">
                           {!isResolved && !isAcked && (
@@ -612,20 +612,20 @@ export default function AlertsPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Name</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="e.g. Comp overspend warning"
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
             />
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Metric</label>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Metric</label>
             <select
               value={form.metric}
               onChange={(e) => setForm({ ...form, metric: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               {METRICS.map((m) => (
                 <option key={m.value} value={m.value}>
@@ -636,13 +636,13 @@ export default function AlertsPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">
                 Comparator
               </label>
               <select
                 value={form.comparator}
                 onChange={(e) => setForm({ ...form, comparator: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
               >
                 {COMPARATORS.map((c) => (
                   <option key={c.value} value={c.value}>
@@ -652,23 +652,23 @@ export default function AlertsPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-slate-500">Value</label>
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-500">Value</label>
               <input
                 type="number"
                 step="any"
                 value={form.value}
                 onChange={(e) => setForm({ ...form, value: e.target.value })}
                 placeholder="e.g. 50000"
-                className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500"
               />
             </div>
           </div>
-          <label className="flex items-center gap-2 text-sm text-slate-300">
+          <label className="flex items-center gap-2 text-sm text-zinc-300">
             <input
               type="checkbox"
               checked={form.is_active}
               onChange={(e) => setForm({ ...form, is_active: e.target.checked })}
-              className="h-4 w-4 rounded border-slate-700 bg-slate-900 text-sky-600 focus:ring-sky-500/60"
+              className="h-4 w-4 rounded border-zinc-700 bg-zinc-900 text-teal-600 focus:ring-teal-500/60"
             />
             Active (evaluated on each run)
           </label>
@@ -682,8 +682,8 @@ function Header({ right }: { right?: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-100">Alerts &amp; Thresholds</h1>
-        <p className="mt-0.5 text-sm text-slate-500">
+        <h1 className="text-xl font-semibold text-zinc-100">Alerts &amp; Thresholds</h1>
+        <p className="mt-0.5 text-sm text-zinc-500">
           Configure variance rules and triage the alerts they generate against plan vs actuals.
         </p>
       </div>

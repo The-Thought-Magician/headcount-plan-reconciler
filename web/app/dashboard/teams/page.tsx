@@ -268,18 +268,18 @@ export default function TeamsPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search teams, cost centers, owners..."
-          className="w-full max-w-sm rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+          className="w-full max-w-sm rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
         />
-        <div className="inline-flex rounded-lg border border-slate-700 bg-slate-800 p-0.5 text-xs">
+        <div className="inline-flex rounded-lg border border-zinc-700 bg-zinc-800 p-0.5 text-xs">
           <button
             onClick={() => setView('tree')}
-            className={`rounded-md px-3 py-1.5 font-medium ${view === 'tree' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'}`}
+            className={`rounded-md px-3 py-1.5 font-medium ${view === 'tree' ? 'bg-teal-600 text-white' : 'text-zinc-400 hover:text-zinc-200'}`}
           >
             Org tree
           </button>
           <button
             onClick={() => setView('table')}
-            className={`rounded-md px-3 py-1.5 font-medium ${view === 'table' ? 'bg-sky-600 text-white' : 'text-slate-400 hover:text-slate-200'}`}
+            className={`rounded-md px-3 py-1.5 font-medium ${view === 'table' ? 'bg-teal-600 text-white' : 'text-zinc-400 hover:text-zinc-200'}`}
           >
             Table
           </button>
@@ -295,27 +295,27 @@ export default function TeamsPage() {
       ) : view === 'tree' ? (
         <Card>
           <CardHeader className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-100">Org tree</h2>
+            <h2 className="text-sm font-semibold text-zinc-100">Org tree</h2>
             <Badge tone="slate">{teams.length} teams</Badge>
           </CardHeader>
           <CardBody className="!px-0 !py-2">
             {(search ? filtered : flat).map((node) => (
               <div
                 key={node.id}
-                className="group flex items-center justify-between border-b border-slate-800/60 px-5 py-2.5 last:border-0 hover:bg-slate-800/30"
+                className="group flex items-center justify-between border-b border-zinc-800/60 px-5 py-2.5 last:border-0 hover:bg-zinc-800/30"
                 style={{ paddingLeft: `${20 + (search ? 0 : node.depth * 22)}px` }}
               >
                 <div className="flex min-w-0 items-center gap-2">
-                  {!search && node.depth > 0 && <span className="text-slate-600">└</span>}
-                  <span className="truncate font-medium text-slate-100">{node.name}</span>
+                  {!search && node.depth > 0 && <span className="text-zinc-600">└</span>}
+                  <span className="truncate font-medium text-zinc-100">{node.name}</span>
                   {node.cost_center && <Badge tone="sky">{node.cost_center}</Badge>}
                   {childCount(node.id) > 0 && (
-                    <span className="text-xs text-slate-500">{childCount(node.id)} sub-team{childCount(node.id) > 1 ? 's' : ''}</span>
+                    <span className="text-xs text-zinc-500">{childCount(node.id)} sub-team{childCount(node.id) > 1 ? 's' : ''}</span>
                   )}
                 </div>
                 <div className="flex items-center gap-3">
                   {node.owner_user_id && (
-                    <span className="hidden font-mono text-xs text-slate-500 sm:inline">{node.owner_user_id}</span>
+                    <span className="hidden font-mono text-xs text-zinc-500 sm:inline">{node.owner_user_id}</span>
                   )}
                   <div className="flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
                     <Button size="sm" variant="ghost" onClick={() => openCreate(node.id)}>
@@ -349,10 +349,10 @@ export default function TeamsPage() {
               <TBody>
                 {filtered.map((t) => (
                   <TR key={t.id}>
-                    <TD className="pl-5 font-medium text-slate-100">{t.name}</TD>
-                    <TD className="text-slate-400">{nameOf(t.parent_id)}</TD>
-                    <TD>{t.cost_center ? <Badge tone="sky">{t.cost_center}</Badge> : <span className="text-slate-600">—</span>}</TD>
-                    <TD className="font-mono text-xs text-slate-400">{t.owner_user_id ?? '—'}</TD>
+                    <TD className="pl-5 font-medium text-zinc-100">{t.name}</TD>
+                    <TD className="text-zinc-400">{nameOf(t.parent_id)}</TD>
+                    <TD>{t.cost_center ? <Badge tone="sky">{t.cost_center}</Badge> : <span className="text-zinc-600">—</span>}</TD>
+                    <TD className="font-mono text-xs text-zinc-400">{t.owner_user_id ?? '—'}</TD>
                     <TD className="pr-5 text-right">
                       <div className="inline-flex gap-1">
                         <Button size="sm" variant="ghost" onClick={() => openEdit(t)}>
@@ -367,7 +367,7 @@ export default function TeamsPage() {
                 ))}
                 {filtered.length === 0 && (
                   <TR className="hover:bg-transparent">
-                    <td className="px-3 py-2.5 pl-5 text-slate-500" colSpan={5}>
+                    <td className="px-3 py-2.5 pl-5 text-zinc-500" colSpan={5}>
                       No teams match &quot;{search}&quot;.
                     </td>
                   </TR>
@@ -400,20 +400,20 @@ export default function TeamsPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Name</label>
+            <label className="mb-1 block text-sm font-medium text-zinc-300">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="Engineering"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-300">Parent team</label>
+            <label className="mb-1 block text-sm font-medium text-zinc-300">Parent team</label>
             <select
               value={form.parent_id}
               onChange={(e) => setForm({ ...form, parent_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
             >
               <option value="">— Top level —</option>
               {teams
@@ -427,21 +427,21 @@ export default function TeamsPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Cost center</label>
+              <label className="mb-1 block text-sm font-medium text-zinc-300">Cost center</label>
               <input
                 value={form.cost_center}
                 onChange={(e) => setForm({ ...form, cost_center: e.target.value })}
                 placeholder="CC-1000"
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm font-medium text-slate-300">Owner user ID</label>
+              <label className="mb-1 block text-sm font-medium text-zinc-300">Owner user ID</label>
               <input
                 value={form.owner_user_id}
                 onChange={(e) => setForm({ ...form, owner_user_id: e.target.value })}
                 placeholder="user_..."
-                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-teal-500 focus:outline-none"
               />
             </div>
           </div>
@@ -464,8 +464,8 @@ export default function TeamsPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
-          Delete <span className="font-semibold text-slate-100">{confirmDelete?.name}</span>?
+        <p className="text-sm text-zinc-300">
+          Delete <span className="font-semibold text-zinc-100">{confirmDelete?.name}</span>?
           {confirmDelete && childCount(confirmDelete.id) > 0 && (
             <span className="mt-2 block text-amber-300">
               This team has {childCount(confirmDelete.id)} sub-team{childCount(confirmDelete.id) > 1 ? 's' : ''}. Reassign or
@@ -494,15 +494,15 @@ function PageHeader({
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-slate-100">Teams &amp; org structure</h1>
-        <p className="mt-1 text-sm text-slate-500">Org tree, cost centers, and team owners.</p>
+        <h1 className="text-2xl font-bold tracking-tight text-zinc-100">Teams &amp; org structure</h1>
+        <p className="mt-1 text-sm text-zinc-500">Org tree, cost centers, and team owners.</p>
       </div>
       <div className="flex items-center gap-3">
         {workspaces.length > 0 && (
           <select
             value={workspaceId}
             onChange={(e) => onSelect(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 focus:border-sky-500 focus:outline-none"
+            className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-zinc-200 focus:border-teal-500 focus:outline-none"
           >
             {workspaces.map((w) => (
               <option key={w.id} value={w.id}>

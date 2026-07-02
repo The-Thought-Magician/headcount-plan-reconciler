@@ -294,8 +294,8 @@ export default function RequisitionsPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold tracking-tight text-slate-100">Requisitions</h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <h1 className="text-xl font-semibold tracking-tight text-zinc-100">Requisitions</h1>
+          <p className="mt-1 text-sm text-zinc-500">
             Track open headcount, status timelines, and link reqs back to the approved plan.
           </p>
         </div>
@@ -304,7 +304,7 @@ export default function RequisitionsPage() {
             <select
               value={wsId}
               onChange={(e) => setWsId(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -348,27 +348,27 @@ export default function RequisitionsPage() {
           {/* Status timeline / distribution */}
           <Card>
             <CardHeader>
-              <h2 className="text-sm font-semibold text-slate-200">Pipeline by status</h2>
+              <h2 className="text-sm font-semibold text-zinc-200">Pipeline by status</h2>
             </CardHeader>
             <CardBody>
               {byStatus.length === 0 ? (
-                <p className="text-sm text-slate-500">No requisitions to chart yet.</p>
+                <p className="text-sm text-zinc-500">No requisitions to chart yet.</p>
               ) : (
                 <div className="space-y-2">
                   {byStatus.map((s) => {
                     const max = Math.max(...byStatus.map((x) => x.count), 1)
                     return (
                       <div key={s.status} className="flex items-center gap-3">
-                        <div className="w-28 shrink-0 text-xs capitalize text-slate-400">
+                        <div className="w-28 shrink-0 text-xs capitalize text-zinc-400">
                           {s.status.replace('_', ' ')}
                         </div>
-                        <div className="flex h-5 flex-1 items-center rounded bg-slate-800/60">
+                        <div className="flex h-5 flex-1 items-center rounded bg-zinc-800/60">
                           <div
-                            className="h-5 rounded bg-sky-500/70"
+                            className="h-5 rounded bg-teal-500/70"
                             style={{ width: `${(s.count / max) * 100}%` }}
                           />
                         </div>
-                        <div className="w-8 shrink-0 text-right text-xs font-medium text-slate-300">{s.count}</div>
+                        <div className="w-8 shrink-0 text-right text-xs font-medium text-zinc-300">{s.count}</div>
                       </div>
                     )
                   })}
@@ -383,12 +383,12 @@ export default function RequisitionsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search title, recruiter, manager..."
-              className="min-w-[220px] flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600"
+              className="min-w-[220px] flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600"
             />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">All statuses</option>
               {STATUSES.map((s) => (
@@ -400,7 +400,7 @@ export default function RequisitionsPage() {
             <select
               value={teamFilter}
               onChange={(e) => setTeamFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
             >
               <option value="">All teams</option>
               {teams.map((t) => (
@@ -465,7 +465,7 @@ export default function RequisitionsPage() {
                         <TD>
                           <button
                             onClick={() => openDetail(r)}
-                            className="text-left font-medium text-slate-100 hover:text-sky-300"
+                            className="text-left font-medium text-zinc-100 hover:text-teal-300"
                           >
                             {r.title ?? 'Untitled'}
                           </button>
@@ -565,23 +565,23 @@ export default function RequisitionsPage() {
               <Field label="Budgeted base" value={money(detail.req.budgeted_base)} />
             </div>
             <div>
-              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Status timeline</h3>
+              <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-zinc-500">Status timeline</h3>
               {detailLoading ? (
                 <Spinner label="Loading events..." />
               ) : detail.events.length === 0 ? (
-                <p className="text-sm text-slate-500">No status events recorded.</p>
+                <p className="text-sm text-zinc-500">No status events recorded.</p>
               ) : (
-                <ol className="relative space-y-3 border-l border-slate-800 pl-4">
+                <ol className="relative space-y-3 border-l border-zinc-800 pl-4">
                   {detail.events.map((ev) => (
                     <li key={ev.id} className="relative">
-                      <span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-sky-500" />
-                      <div className="flex flex-wrap items-center gap-2 text-sm text-slate-200">
-                        {ev.from_status && <span className="text-slate-500">{ev.from_status}</span>}
-                        {ev.from_status && <span className="text-slate-600">→</span>}
+                      <span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-teal-500" />
+                      <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-200">
+                        {ev.from_status && <span className="text-zinc-500">{ev.from_status}</span>}
+                        {ev.from_status && <span className="text-zinc-600">→</span>}
                         <Badge tone={statusTone[ev.to_status ?? ''] ?? 'slate'}>{ev.to_status}</Badge>
-                        <span className="text-xs text-slate-500">{fmtDate(ev.created_at)}</span>
+                        <span className="text-xs text-zinc-500">{fmtDate(ev.created_at)}</span>
                       </div>
-                      {ev.note && <p className="mt-0.5 text-xs text-slate-500">{ev.note}</p>}
+                      {ev.note && <p className="mt-0.5 text-xs text-zinc-500">{ev.note}</p>}
                     </li>
                   ))}
                 </ol>
@@ -600,8 +600,8 @@ export default function RequisitionsPage() {
 function Field({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div>
-      <div className="text-xs uppercase tracking-wide text-slate-500">{label}</div>
-      <div className="mt-0.5 text-slate-200">{value}</div>
+      <div className="text-xs uppercase tracking-wide text-zinc-500">{label}</div>
+      <div className="mt-0.5 text-zinc-200">{value}</div>
     </div>
   )
 }
@@ -773,8 +773,8 @@ function StatusModal({
       {error && <div className="mb-3 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-300">{error}</div>}
       {req && (
         <div className="space-y-3">
-          <p className="text-sm text-slate-400">
-            <span className="text-slate-200">{req.title}</span> currently{' '}
+          <p className="text-sm text-zinc-400">
+            <span className="text-zinc-200">{req.title}</span> currently{' '}
             <Badge tone={statusTone[req.status ?? ''] ?? 'slate'}>{req.status}</Badge>
           </p>
           <L label="New status">
@@ -844,8 +844,8 @@ function LinkPlanModal({
       {error && <div className="mb-3 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-300">{error}</div>}
       {req && (
         <div className="space-y-3">
-          <p className="text-sm text-slate-400">
-            Reconcile <span className="text-slate-200">{req.title}</span> against an approved plan line so it counts
+          <p className="text-sm text-zinc-400">
+            Reconcile <span className="text-zinc-200">{req.title}</span> against an approved plan line so it counts
             toward plan-vs-actual.
           </p>
           <L label="Plan line">
@@ -950,7 +950,7 @@ function BulkImportModal({
           {error || parseErr}
         </div>
       )}
-      <p className="mb-2 text-xs text-slate-500">
+      <p className="mb-2 text-xs text-zinc-500">
         Paste CSV. First row is the header. Supported columns: title, team_id, level, status, recruiter,
         hiring_manager, hire_type, fill_by, target_start, budgeted_base.
       </p>
@@ -961,7 +961,7 @@ function BulkImportModal({
         onChange={(e) => setText(e.target.value)}
       />
       {rows.length > 0 && (
-        <div className="mt-3 max-h-40 overflow-auto rounded-lg border border-slate-800">
+        <div className="mt-3 max-h-40 overflow-auto rounded-lg border border-zinc-800">
           <Table>
             <THead>
               <TR>
@@ -989,12 +989,12 @@ function BulkImportModal({
 }
 
 const inp =
-  'w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-sky-500 focus:outline-none'
+  'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-teal-500 focus:outline-none'
 
 function L({ label, children, full }: { label: string; children: React.ReactNode; full?: boolean }) {
   return (
     <label className={`block ${full ? 'sm:col-span-2' : ''}`}>
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
       {children}
     </label>
   )
